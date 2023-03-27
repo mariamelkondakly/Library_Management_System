@@ -7,9 +7,3 @@ struct book
 {
 	
 };
-int main()
-{
-
-
-	return 0;
-}
