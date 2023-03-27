@@ -5,5 +5,11 @@ using namespace std;
 
 struct book
 {
-
+	
 };
+int main()
+{
+
+
+	return 0;
+}
