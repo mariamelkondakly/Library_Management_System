@@ -7,6 +7,3 @@ struct book
 {
 
 };
-int main() {
-	cout << "Welcome !!!!";
-}
