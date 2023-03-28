@@ -5,5 +5,8 @@ using namespace std;
 
 struct book
 {
-	
+
 };
+int main() {
+	cout << "Welcome !!!!";
+}
