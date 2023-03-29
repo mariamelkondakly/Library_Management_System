@@ -3,7 +3,10 @@
 #include <fstream>
 using namespace std;
 
-const int arrsize = 10000; 
+const int arrsize = 10000;
+int fantasy = 9;
+int mystery = 10;
+int int romance = 9;
 
 //array size of books
 //type is whether book is digital, paperback or hardcover
