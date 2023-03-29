@@ -6,7 +6,9 @@ using namespace std;
 const int arrsize = 10000;
 int fantasy = 9;
 int mystery = 10;
-int int romance = 9;
+int romance = 9;
+int non_fiction = 9;
+int 
 
 //array size of books
 //type is whether book is digital, paperback or hardcover
