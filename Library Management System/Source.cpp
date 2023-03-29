@@ -4,11 +4,11 @@
 using namespace std;
 
 const int arrsize = 10000;
-int fantasy = 9;
-int mystery = 10;
-int romance = 9;
-int non_fiction = 9;
-int 
+int fantasy_num = 9;
+int mystery_num = 10;
+int romance_num = 9;
+int non_fiction_num = 9;
+int science_fiction_num = 9;
 
 //array size of books
 //type is whether book is digital, paperback or hardcover
@@ -18,10 +18,10 @@ void file_to_fantasy()
 {
 	string line;
 	int index;
-	ifstream file("Fantasy.txt");
+	ifstream file("fantasy.txt");
 
 	if (file.is_open()) {
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < fantasy_num; i++) {
 			index = 0;
 			while (getline(file, line))
 			{
@@ -45,10 +45,10 @@ void file_to_mystery()
 {
 	string line;
 	int index;
-	ifstream file("Mystery.txt");
+	ifstream file("mystery.txt");
 
 	if (file.is_open()) {
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < mystery_num; i++) {
 			index = 0;
 			while (getline(file, line))
 			{
@@ -83,7 +83,7 @@ struct book
 
 int main()
 {
-	books_to_struct();
+	
 	cout << fantasy[1].title << "\n\n";
 	return 0;
 }
