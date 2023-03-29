@@ -19,7 +19,7 @@ struct book
 	int numofpages;
 	float review;
 
-} fantasy[arrsize], mystery[arrsize], romcom[arrsize], non_fiction[arrsize], scientific_fiction[arrsize];
+} fantasy[arrsize], mystery[arrsize], romantic[arrsize], non_fiction[arrsize], scientific_fiction[arrsize];
 
 int main()
 {
