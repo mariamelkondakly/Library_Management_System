@@ -21,7 +21,7 @@ struct book
 	string numofpages;
 	string review;
 
-} Fantasy[arrsize], Mystery[arrsize], Romance[arrsize], Non_fiction[arrsize], Science_fiction[arrsize];
+} fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
 
 int main()
