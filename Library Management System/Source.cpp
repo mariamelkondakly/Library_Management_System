@@ -13,6 +13,19 @@ int science_fiction_num = 9;
 //array size of books
 //type is whether book is digital, paperback or hardcover
 
+struct book
+{
+	string title;
+	string author;
+	string discription;
+	string type;
+	string status;
+	string price;
+	string numofpages;
+	string review;
+
+} fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
+
 void file_to_fantasy()
 //converting file to the fantasy struct
 {
@@ -67,24 +80,11 @@ void file_to_mystery()
 	}
 }
 
-struct book
-{
-	string title;
-	string author;
-	string discription;
-	string type;
-	string status;
-	string price;
-	string numofpages;
-	string review;
-
-} fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
-
 
 int main()
 {
-	
-	cout << fantasy[1].title << "\n\n";
+	file_to_fantasy();
+	cout << fantasy[0].title << "\n\n";
 	return 0;
 }
 
