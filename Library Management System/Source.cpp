@@ -4,12 +4,8 @@
 using namespace std;
 
 const int arrsize = 10000;
-int fantasy_num = 9;
-int mystery_num = 10;
-int romance_num = 9;
-int non_fiction_num = 9;
-int science_fiction_num = 9;
-int fantasycounter=0, mysterycounter=0, romancecounter=0, non_fictioncounter=0, science_fictioncounter = 0;
+int fantasy_num = 10 , mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10;
+int fantasycounter = 0, mysterycounter = 0, romancecounter = 0, non_fictioncounter = 0, science_fictioncounter = 0;
 
 //array size of books
 //type is whether book is digital, paperback or hardcover
@@ -37,6 +33,7 @@ void file_to_fantasy()
 	if (file.is_open()) {
 		for (int i = 0; i < fantasy_num; i++) {
 			index = 0;
+			fantasycounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    fantasy[i].title = line;
@@ -48,9 +45,9 @@ void file_to_fantasy()
 				else if (index == 6)    fantasy[i].numofpages = line;
 				else if (index == 7)    fantasy[i].review = line;
 				index++;
-				if (index == 8)	break;
+				if (line == "##") { fantasycounter++; break; }
+				if (index == 8)		break;
 			}
-			fantasycounter++;
 		}
 	}
 }
@@ -65,6 +62,7 @@ void file_to_mystery()
 	if (file.is_open()) {
 		for (int i = 0; i < mystery_num; i++) {
 			index = 0;
+			mysterycounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    mystery[i].title = line;
@@ -76,9 +74,9 @@ void file_to_mystery()
 				else if (index == 6)    mystery[i].numofpages = line;
 				else if (index == 7)    mystery[i].review = line;
 				index++;
+				if (line == "##") { mysterycounter++; break; }
 				if (index == 8)	break;
 			}
-			mysterycounter++;
 		}
 	}
 }
@@ -93,6 +91,7 @@ void file_to_romance()
 	if (file.is_open()) {
 		for (int i = 0; i < romance_num; i++) {
 			index = 0;
+			romancecounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    romance[i].title = line;
@@ -104,9 +103,9 @@ void file_to_romance()
 				else if (index == 6)    romance[i].numofpages = line;
 				else if (index == 7)    romance[i].review = line;
 				index++;
+				if (line == "##") { romancecounter++; break; }
 				if (index == 8)	break;
 			}
-			romancecounter++;
 		}
 	}
 }
@@ -121,6 +120,7 @@ void file_to_non_fiction()
 	if (file.is_open()) {
 		for (int i = 0; i < non_fiction_num; i++) {
 			index = 0;
+			non_fictioncounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    non_fiction[i].title = line;
@@ -132,9 +132,9 @@ void file_to_non_fiction()
 				else if (index == 6)    non_fiction[i].numofpages = line;
 				else if (index == 7)    non_fiction[i].review = line;
 				index++;
+				if (line == "##") { non_fictioncounter++; break; }
 				if (index == 8)	break;
 			}
-			romancecounter++;
 		}
 	}
 }
@@ -149,6 +149,7 @@ void file_to_science_fiction()
 	if (file.is_open()) {
 		for (int i = 0; i < science_fiction_num; i++) {
 			index = 0;
+			science_fictioncounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    science_fiction[i].title = line;
@@ -160,15 +161,14 @@ void file_to_science_fiction()
 				else if (index == 6)    science_fiction[i].numofpages = line;
 				else if (index == 7)    science_fiction[i].review = line;
 				index++;
+				if (line == "##") { science_fictioncounter++; break; }
 				if (index == 8)	break;
 			}
-			science_fictioncounter;
 		}
 	}
 }
 
-void fantasy_to_file()
-//converting the struct fantasy to a file.
+void struct_to_fantasy()
 {
 	ofstream file;
 	file.open("fantasy.txt");
@@ -188,11 +188,11 @@ void fantasy_to_file()
 			else if (j == 7) file << fantasy[i].review << endl;
 		}
 	}
-
+	file << "##";
 	file.close();
 }
 
-void mystery_to_file()
+void struct_to_mystery()
 {
 	ofstream file;
 	file.open("mystery.txt");
@@ -212,11 +212,11 @@ void mystery_to_file()
 			else if (j == 7) file << mystery[i].review << endl;
 		}
 	}
-
+	file << "##";
 	file.close();
 }
 
-void romance_to_file()
+void struct_to_romantic()
 {
 	ofstream file;
 	file.open("romance.txt");
@@ -235,12 +235,12 @@ void romance_to_file()
 			else if (j == 7) file << romance[i].review << endl;
 		}
 	}
-
+	file << "##";
 	file.close();
 }
 
 
-void non_fiction_to_file()
+void struct_to_non_fiction()
 {
 	ofstream file;
 	file.open("non_fiction.txt");
@@ -259,11 +259,11 @@ void non_fiction_to_file()
 			else if (j == 7) file << non_fiction[i].review << endl;
 		}
 	}
-
+	file << "##";
 	file.close();
 }
 
-void science_fiction_to_file()
+void struct_to_scientific_fiction()
 {
 	ofstream file;
 	file.open("science_fiction.txt");
@@ -282,36 +282,31 @@ void science_fiction_to_file()
 			else if (j == 7) file << science_fiction[i].review << endl;
 		}
 	}
-
+	file << "##";
 	file.close();
 }
 
-void files_to_struct()
-{
+void files_to_struct() {
 	file_to_fantasy();
 	file_to_mystery();
+	file_to_romance();
 	file_to_non_fiction();
 	file_to_science_fiction();
-	file_to_romance();
 }
-
 void structs_to_files()
 {
-	fantasy_to_file();
-	mystery_to_file();
-	romance_to_file();
-	non_fiction_to_file();
-	science_fiction_to_file();
+	struct_to_fantasy();
+	struct_to_mystery();
+	struct_to_romantic();
+	struct_to_non_fiction();
+	struct_to_scientific_fiction();
 }
 
 
 int main()
 {
-	file_to_fantasy();
-	cout << fantasy[1].price << endl;
-	cout << fantasy[0].title << "\n\n";
+	files_to_struct();
+	
+	structs_to_files();
 	return 0;
 }
-
-
-
