@@ -161,7 +161,7 @@ void file_to_science_fiction()
 	}
 }
 
-void struct_to_fantasy()
+void fantasy_to_file()
 {
 	ofstream file;
 	file.open("fantasy.txt");
@@ -185,7 +185,7 @@ void struct_to_fantasy()
 	file.close();
 }
 
-void struct_to_mystery()
+void mystery_to_file()
 {
 	ofstream file;
 	file.open("mystery.txt");
@@ -209,7 +209,7 @@ void struct_to_mystery()
 	file.close();
 }
 
-void struct_to_romantic()
+void romance_to_file()
 {
 	ofstream file;
 	file.open("romance.txt");
@@ -233,7 +233,7 @@ void struct_to_romantic()
 }
 
 
-void struct_to_non_fiction()
+void non_fiction_to_file()
 {
 	ofstream file;
 	file.open("non_fiction.txt");
@@ -256,7 +256,7 @@ void struct_to_non_fiction()
 	file.close();
 }
 
-void struct_to_scientific_fiction()
+void science_fiction_to_file()
 {
 	ofstream file;
 	file.open("science_fiction.txt");
@@ -279,28 +279,31 @@ void struct_to_scientific_fiction()
 	file.close();
 }
 
-void files_to_struct() {
+void files_to_struct()
+{
 	file_to_fantasy();
 	file_to_mystery();
-	file_to_romance();
 	file_to_non_fiction();
 	file_to_science_fiction();
+	file_to_romance();
 }
+
 void structs_to_files()
 {
-	struct_to_fantasy();
-	struct_to_mystery();
-	struct_to_romantic();
-	struct_to_non_fiction();
-	struct_to_scientific_fiction();
+	fantasy_to_file();
+	mystery_to_file();
+	romance_to_file();
+	non_fiction_to_file();
+	science_fiction_to_file();
 }
 
 
 int main()
 {
-	files_to_struct();
-	cout << romance[0].title << "\n\n";
+	file_to_fantasy();
+	cout << fantasy[0].title << "\n\n";
 	return 0;
 }
+
 
 
