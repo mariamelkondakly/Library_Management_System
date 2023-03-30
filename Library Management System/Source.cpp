@@ -279,6 +279,13 @@ void struct_to_scientific_fiction()
 	file.close();
 }
 
+void files_to_struct() {
+	file_to_fantasy();
+	file_to_mystery();
+	file_to_romance();
+	file_to_non_fiction();
+	file_to_science_fiction();
+}
 void structs_to_files()
 {
 	struct_to_fantasy();
@@ -291,8 +298,8 @@ void structs_to_files()
 
 int main()
 {
-	file_to_fantasy();
-	cout << fantasy[0].title << "\n\n";
+	files_to_struct();
+	cout << romance[0].title << "\n\n";
 	return 0;
 }
 
