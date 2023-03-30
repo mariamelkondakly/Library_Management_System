@@ -306,7 +306,7 @@ void structs_to_files()
 int main()
 {
 	files_to_struct();
-	
+	cout << science_fiction[0].title << "\n";
 	structs_to_files();
 	return 0;
 }
