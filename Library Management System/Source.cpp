@@ -9,6 +9,7 @@ int mystery_num = 10;
 int romance_num = 9;
 int non_fiction_num = 9;
 int science_fiction_num = 9;
+int fantasycounter=0, mysterycounter=0, romancecounter=0, non_fictioncounter=0, science_fictioncounter = 0;
 
 //array size of books
 //type is whether book is digital, paperback or hardcover
@@ -49,6 +50,7 @@ void file_to_fantasy()
 				index++;
 				if (index == 8)	break;
 			}
+			fantasycounter++;
 		}
 	}
 }
@@ -76,6 +78,7 @@ void file_to_mystery()
 				index++;
 				if (index == 8)	break;
 			}
+			mysterycounter++;
 		}
 	}
 }
@@ -103,6 +106,7 @@ void file_to_romance()
 				index++;
 				if (index == 8)	break;
 			}
+			romancecounter++;
 		}
 	}
 }
@@ -130,6 +134,7 @@ void file_to_non_fiction()
 				index++;
 				if (index == 8)	break;
 			}
+			romancecounter++;
 		}
 	}
 }
@@ -157,11 +162,13 @@ void file_to_science_fiction()
 				index++;
 				if (index == 8)	break;
 			}
+			science_fictioncounter;
 		}
 	}
 }
 
 void fantasy_to_file()
+//converting the struct fantasy to a file.
 {
 	ofstream file;
 	file.open("fantasy.txt");
@@ -301,6 +308,7 @@ void structs_to_files()
 int main()
 {
 	file_to_fantasy();
+	cout << fantasy[1].price << endl;
 	cout << fantasy[0].title << "\n\n";
 	return 0;
 }
