@@ -161,6 +161,134 @@ void file_to_science_fiction()
 	}
 }
 
+void struct_to_fantasy()
+{
+	ofstream file;
+	file.open("fantasy.txt");
+
+	for (int i = 0; i < fantasy_num; i++)
+	{
+
+		for (int j = 0; j < 8; j++)
+		{
+			if (j == 0) file << fantasy[i].title << endl;
+			else if (j == 1) file << fantasy[i].author << endl;
+			else if (j == 2) file << fantasy[i].discription << endl;
+			else if (j == 3) file << fantasy[i].type << endl;
+			else if (j == 4) file << fantasy[i].status << endl;
+			else if (j == 5) file << fantasy[i].price << endl;
+			else if (j == 6) file << fantasy[i].numofpages << endl;
+			else if (j == 7) file << fantasy[i].review << endl;
+		}
+	}
+
+	file.close();
+}
+
+void struct_to_mystery()
+{
+	ofstream file;
+	file.open("mystery.txt");
+
+	for (int i = 0; i < mystery_num; i++)
+	{
+
+		for (int j = 0; j < 8; j++)
+		{
+			if (j == 0) file << mystery[i].title << endl;
+			else if (j == 1) file << mystery[i].author << endl;
+			else if (j == 2) file << mystery[i].discription << endl;
+			else if (j == 3) file << mystery[i].type << endl;
+			else if (j == 4) file << mystery[i].status << endl;
+			else if (j == 5) file << mystery[i].price << endl;
+			else if (j == 6) file << mystery[i].numofpages << endl;
+			else if (j == 7) file << mystery[i].review << endl;
+		}
+	}
+
+	file.close();
+}
+
+void struct_to_romantic()
+{
+	ofstream file;
+	file.open("romantic.txt");
+
+	for (int i = 0; i < romance_num; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			if (j == 0) file << romance[i].title << endl;
+			else if (j == 1) file << romance[i].author << endl;
+			else if (j == 2) file << romance[i].discription << endl;
+			else if (j == 3) file << romance[i].type << endl;
+			else if (j == 4) file << romance[i].status << endl;
+			else if (j == 5) file << romance[i].price << endl;
+			else if (j == 6) file << romance[i].numofpages << endl;
+			else if (j == 7) file << romance[i].review << endl;
+		}
+	}
+
+	file.close();
+}
+
+
+void struct_to_non_fiction()
+{
+	ofstream file;
+	file.open("non_fiction.txt");
+
+	for (int i = 0; i < non_fiction_num; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			if (j == 0) file << non_fiction[i].title << endl;
+			else if (j == 1) file << non_fiction[i].author << endl;
+			else if (j == 2) file << non_fiction[i].discription << endl;
+			else if (j == 3) file << non_fiction[i].type << endl;
+			else if (j == 4) file << non_fiction[i].status << endl;
+			else if (j == 5) file << non_fiction[i].price << endl;
+			else if (j == 6) file << non_fiction[i].numofpages << endl;
+			else if (j == 7) file << non_fiction[i].review << endl;
+		}
+	}
+
+	file.close();
+}
+
+void struct_to_scientific_fiction()
+{
+	ofstream file;
+	file.open("scientific_fiction.txt");
+
+	for (int i = 0; i < science_fiction_num; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			if (j == 0) file << science_fiction[i].title << endl;
+			else if (j == 1) file << science_fiction[i].author << endl;
+			else if (j == 2) file << science_fiction[i].discription << endl;
+			else if (j == 3) file << science_fiction[i].type << endl;
+			else if (j == 4) file << science_fiction[i].status << endl;
+			else if (j == 5) file << science_fiction[i].price << endl;
+			else if (j == 6) file << science_fiction[i].numofpages << endl;
+			else if (j == 7) file << science_fiction[i].review << endl;
+		}
+	}
+
+	file.close();
+}
+
+void structs_to_files()
+{
+	struct_to_fantasy();
+	struct_to_mystery();
+	struct_to_romantic();
+	struct_to_non_fiction();
+	struct_to_scientific_fiction();
+}
+
+
 int main()
 {
 	file_to_fantasy();
