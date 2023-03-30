@@ -80,6 +80,86 @@ void file_to_mystery()
 	}
 }
 
+void file_to_romance()
+//converting file to the romance struct
+{
+	string line;
+	int index;
+	ifstream file("romance.txt");
+
+	if (file.is_open()) {
+		for (int i = 0; i < romance_num; i++) {
+			index = 0;
+			while (getline(file, line))
+			{
+				if (index == 0)    romance[i].title = line;
+				else if (index == 1)    romance[i].author = line;
+				else if (index == 2)    romance[i].discription = line;
+				else if (index == 3)    romance[i].type = line;
+				else if (index == 4)    romance[i].status = line;
+				else if (index == 5)    romance[i].price = line;
+				else if (index == 6)    romance[i].numofpages = line;
+				else if (index == 7)    romance[i].review = line;
+				index++;
+				if (index == 8)	break;
+			}
+		}
+	}
+}
+
+void file_to_non_fiction()
+//converting file to the non fiction struct
+{
+	string line;
+	int index;
+	ifstream file("non_fiction.txt");
+
+	if (file.is_open()) {
+		for (int i = 0; i < non_fiction_num; i++) {
+			index = 0;
+			while (getline(file, line))
+			{
+				if (index == 0)    non_fiction[i].title = line;
+				else if (index == 1)    non_fiction[i].author = line;
+				else if (index == 2)    non_fiction[i].discription = line;
+				else if (index == 3)    non_fiction[i].type = line;
+				else if (index == 4)    non_fiction[i].status = line;
+				else if (index == 5)    non_fiction[i].price = line;
+				else if (index == 6)    non_fiction[i].numofpages = line;
+				else if (index == 7)    non_fiction[i].review = line;
+				index++;
+				if (index == 8)	break;
+			}
+		}
+	}
+}
+
+void file_to_science_fiction()
+//converting file to the science fiction struct
+{
+	string line;
+	int index;
+	ifstream file("science_fiction.txt");
+
+	if (file.is_open()) {
+		for (int i = 0; i < science_fiction_num; i++) {
+			index = 0;
+			while (getline(file, line))
+			{
+				if (index == 0)    science_fiction[i].title = line;
+				else if (index == 1)    science_fiction[i].author = line;
+				else if (index == 2)    science_fiction[i].discription = line;
+				else if (index == 3)    science_fiction[i].type = line;
+				else if (index == 4)    science_fiction[i].status = line;
+				else if (index == 5)    science_fiction[i].price = line;
+				else if (index == 6)    science_fiction[i].numofpages = line;
+				else if (index == 7)    science_fiction[i].review = line;
+				index++;
+				if (index == 8)	break;
+			}
+		}
+	}
+}
 
 int main()
 {
