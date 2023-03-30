@@ -112,7 +112,7 @@ void file_to_non_fiction()
 {
 	string line;
 	int index;
-	ifstream file("non_fiction.txt");
+	ifstream file("nonfiction.txt");
 
 	if (file.is_open()) {
 		for (int i = 0; i < non_fiction_num; i++) {
@@ -212,7 +212,7 @@ void struct_to_mystery()
 void struct_to_romantic()
 {
 	ofstream file;
-	file.open("romantic.txt");
+	file.open("romance.txt");
 
 	for (int i = 0; i < romance_num; i++)
 	{
@@ -259,7 +259,7 @@ void struct_to_non_fiction()
 void struct_to_scientific_fiction()
 {
 	ofstream file;
-	file.open("scientific_fiction.txt");
+	file.open("science_fiction.txt");
 
 	for (int i = 0; i < science_fiction_num; i++)
 	{
