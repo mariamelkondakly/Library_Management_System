@@ -4,13 +4,12 @@ using namespace std;
 const int arrsize = 10000;
 char answer = 'y';
 int number, section = 0, number_of_books = 0; int answers;
-void empty() {
+void empty() {      // return to home page
     cout << "\033[2J\033[1;1H";
 };
 
 struct cart
 {
-
     string title;
     float price;
 }reader[100];
