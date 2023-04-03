@@ -1,18 +1,19 @@
 #include <iostream>
 #include<string>
+#include <fstream>
 using namespace std;
 const int arrsize = 10000;
-char answer = 'y';
+
 int number, section = 0, number_of_books = 0; int answers;
-void empty() {      // return to home page
+void empty() {
     cout << "\033[2J\033[1;1H";
 };
 
-struct cart
-{
+struct cart {
     string title;
+    string status;
     float price;
-}reader[100];
+}reader[1000];
 
 struct book
 {
@@ -26,7 +27,10 @@ struct book
     string review;
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
-int check(int number, char answer) {
+
+char answer = 'y';
+
+void check(int number) {
     do {
         cin >> number;  // number = index + 1 of books in certain array
         number_of_books++;
@@ -39,28 +43,50 @@ int check(int number, char answer) {
         else
             cout << "invalid option";
     } while (answer != 'n');
-    return number_of_books;
+}
 
-};
+void file_to_cart()
+{
+        string line;
+        int index;
+        ifstream cart("cart.txt");
+        if (cart.is_open()) {
+            for (int i = 0; i < number_of_books; i++) {
+                index = 0;
+                while (getline(cart, line)) {
+                    reader[index].title = line;
+                    getline(cart, line);
+                    reader[index].status = line;
+                    getline(cart, line);
+                    reader[index].price = stof(line);
+                    index++;
+                }
+            }
+            number_of_books = index;
+            cart.close();
+        }
+ }
+
 int main() {
+    file_to_cart();
     int section;
     cout << "which section,would you like to choose?" << endl << "1.fantasy\n" << "2.mystery\n" << "3.romance\n" << "4.non_fiction\n" << "5.science_fiction\n";
     cin >> section;
     switch (section) {
     case 1:
-        check(number, answer);
+        check(number);    // number is index + 1 of section arrays 
         break;
     case 2:
-        check(number, answer);
+        check(number);
         break;
     case 3:
-        check(number, answer);
+        check(number);
         break;
     case 4:
-        check(number, answer);
+        check(number);
         break;
     case 5:
-        check(number, answer);
+        check(number);
         break;
 
     }
