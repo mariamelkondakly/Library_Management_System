@@ -17,7 +17,7 @@ struct book
 	string discription;
 	string type;
 	string status;
-	string price;
+	int price;
 	string numofpages;
 	string review;
 
@@ -41,7 +41,7 @@ void file_to_fantasy()
 				else if (index == 2)    fantasy[i].discription = line;
 				else if (index == 3)    fantasy[i].type = line;
 				else if (index == 4)    fantasy[i].status = line;
-				else if (index == 5)    fantasy[i].price = line;
+				else if (index == 5)    fantasy[i].price = stoi(line);
 				else if (index == 6)    fantasy[i].numofpages = line;
 				else if (index == 7)    fantasy[i].review = line;
 				index++;
@@ -70,7 +70,7 @@ void file_to_mystery()
 				else if (index == 2)    mystery[i].discription = line;
 				else if (index == 3)    mystery[i].type = line;
 				else if (index == 4)    mystery[i].status = line;
-				else if (index == 5)    mystery[i].price = line;
+				else if (index == 5)    mystery[i].price = stoi(line);
 				else if (index == 6)    mystery[i].numofpages = line;
 				else if (index == 7)    mystery[i].review = line;
 				index++;
@@ -99,7 +99,7 @@ void file_to_romance()
 				else if (index == 2)    romance[i].discription = line;
 				else if (index == 3)    romance[i].type = line;
 				else if (index == 4)    romance[i].status = line;
-				else if (index == 5)    romance[i].price = line;
+				else if (index == 5)    romance[i].price = stoi(line);
 				else if (index == 6)    romance[i].numofpages = line;
 				else if (index == 7)    romance[i].review = line;
 				index++;
@@ -128,7 +128,7 @@ void file_to_non_fiction()
 				else if (index == 2)    non_fiction[i].discription = line;
 				else if (index == 3)    non_fiction[i].type = line;
 				else if (index == 4)    non_fiction[i].status = line;
-				else if (index == 5)    non_fiction[i].price = line;
+				else if (index == 5)    non_fiction[i].price = stoi(line);
 				else if (index == 6)    non_fiction[i].numofpages = line;
 				else if (index == 7)    non_fiction[i].review = line;
 				index++;
@@ -157,7 +157,7 @@ void file_to_science_fiction()
 				else if (index == 2)    science_fiction[i].discription = line;
 				else if (index == 3)    science_fiction[i].type = line;
 				else if (index == 4)    science_fiction[i].status = line;
-				else if (index == 5)    science_fiction[i].price = line;
+				else if (index == 5)    science_fiction[i].price = stoi(line);
 				else if (index == 6)    science_fiction[i].numofpages = line;
 				else if (index == 7)    science_fiction[i].review = line;
 				index++;
