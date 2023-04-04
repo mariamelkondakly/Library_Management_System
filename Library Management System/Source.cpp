@@ -320,13 +320,13 @@ void select_book(int section_num) // showing the data of a specified book
 
 	if (section_num == 1)
 	{
-		cout << "Author name : " << fantasy[num_book].author << endl;
-		cout << "The discription :" << fantasy[num_book].discription << endl;
-		cout << "The type of the book : " << fantasy[num_book].type << endl;
-		cout << "The status of the book : " << fantasy[num_book].status << endl;
-		cout << "The price : " << fantasy[num_book].price << endl;
-		cout << "Number of pages : " << fantasy[num_book].numofpages << endl;
-		cout << "The rate of the book : " << fantasy[num_book].review << endl;
+		cout << "Author name : " << fantasy[num_book-1].author << endl;
+		cout << "The discription :" << fantasy[num_book-1].discription << endl;
+		cout << "The type of the book : " << fantasy[num_book-1].type << endl;
+		cout << "The status of the book : " << fantasy[num_book-1].status << endl;
+		cout << "The price : " << fantasy[num_book-1].price << endl;
+		cout << "Number of pages : " << fantasy[num_book-1].numofpages << endl;
+		cout << "The rate of the book : " << fantasy[num_book-1].review << endl;
 	}
 
 	else if (section_num == 2)
