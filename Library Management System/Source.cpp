@@ -47,25 +47,38 @@ void check(int number) {
 
 void file_to_cart()
 {
-        string line;
-        int index;
-        ifstream cart("cart.txt");
-        if (cart.is_open()) {
-            for (int i = 0; i < number_of_books; i++) {
-                index = 0;
-                while (getline(cart, line)) {
-                    reader[index].title = line;
-                    getline(cart, line);
-                    reader[index].status = line;
-                    getline(cart, line);
-                    reader[index].price = stof(line);
-                    index++;
-                }
+    string line;
+    int index;
+    ifstream cart("cart.txt");
+    if (cart.is_open()) {
+        for (int i = 0; i < number_of_books; i++) {
+            index = 0;
+            while (getline(cart, line)) {
+                reader[index].title = line;
+                getline(cart, line);
+                reader[index].status = line;
+                getline(cart, line);
+                reader[index].price = stof(line);
+                index++;
             }
-            number_of_books = index;
-            cart.close();
         }
- }
+        number_of_books = index;
+        cart.close();
+    }
+}
+void cart_to_file() {
+    ofstream cart;
+    cart.open("cart.txt");
+    for (int i = 0; i < number_of_books; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (j == 0)cart << reader[i].title << endl;
+            else if (j == 1)cart << reader[i].status << endl;
+            else if (j == 3)cart << reader[i].price << endl;
+        }
+    }
+    cart << "##";
+    cart.close();
+}
 
 int main() {
     file_to_cart();
