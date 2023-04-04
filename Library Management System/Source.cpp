@@ -4,7 +4,7 @@
 using namespace std;
 
 const int arrsize = 10000;
-int fantasy_num = 10 , mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10;
+int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10;
 int fantasycounter = 0, mysterycounter = 0, romancecounter = 0, non_fictioncounter = 0, science_fictioncounter = 0;
 
 //array size of books
@@ -17,11 +17,13 @@ struct book
 	string discription;
 	string type;
 	string status;
-	string price ;
+	string price;
 	string numofpages;
 	string review;
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
+
+
 
 void file_to_fantasy()
 //converting file to the fantasy struct
@@ -50,6 +52,7 @@ void file_to_fantasy()
 			}
 		}
 	}
+	file.close();
 }
 
 void file_to_mystery()
@@ -79,6 +82,8 @@ void file_to_mystery()
 			}
 		}
 	}
+
+	file.close();
 }
 
 void file_to_romance()
@@ -108,6 +113,8 @@ void file_to_romance()
 			}
 		}
 	}
+
+	file.close();
 }
 
 void file_to_non_fiction()
@@ -137,6 +144,7 @@ void file_to_non_fiction()
 			}
 		}
 	}
+	file.close();
 }
 
 void file_to_science_fiction()
@@ -166,6 +174,8 @@ void file_to_science_fiction()
 			}
 		}
 	}
+
+	file.close();
 }
 
 void struct_to_fantasy()
@@ -302,11 +312,129 @@ void structs_to_files()
 	struct_to_scientific_fiction();
 }
 
+void select_book(int section_num) // showing the data of a specified book
+{
+	int num_book;
+	cout << "Please Enter the number of the book : ";
+	cin >> num_book;
+
+	if (section_num == 1)
+	{
+		cout << "Author name : " << fantasy[num_book].author << endl;
+		cout << "The discription :" << fantasy[num_book].discription << endl;
+		cout << "The type of the book : " << fantasy[num_book].type << endl;
+		cout << "The status of the book : " << fantasy[num_book].status << endl;
+		cout << "The price : " << fantasy[num_book].price << endl;
+		cout << "Number of pages : " << fantasy[num_book].numofpages << endl;
+		cout << "The rate of the book : " << fantasy[num_book].review << endl;
+	}
+
+	else if (section_num == 2)
+	{
+		cout << mystery[num_book].author << endl;
+		cout << mystery[num_book].discription << endl;
+		cout << mystery[num_book].type << endl;
+		cout << mystery[num_book].status << endl;
+		cout << mystery[num_book].price << endl;
+		cout << mystery[num_book].numofpages << endl;
+		cout << mystery[num_book].review << endl;
+	}
+
+	else if (section_num == 3)
+	{
+		cout << romance[num_book].author << endl;
+		cout << romance[num_book].discription << endl;
+		cout << romance[num_book].type << endl;
+		cout << romance[num_book].status << endl;
+		cout << romance[num_book].price << endl;
+		cout << romance[num_book].numofpages << endl;
+		cout << romance[num_book].review << endl;
+	}
+
+	else if (section_num == 4)
+	{
+		cout << non_fiction[num_book].author << endl;
+		cout << non_fiction[num_book].discription << endl;
+		cout << non_fiction[num_book].author << endl;
+		cout << non_fiction[num_book].type << endl;
+		cout << non_fiction[num_book].status << endl;
+		cout << non_fiction[num_book].price << endl;
+		cout << non_fiction[num_book].numofpages << endl;
+		cout << non_fiction[num_book].review << endl;
+	}
+
+	else if (section_num == 5)
+	{
+		cout << science_fiction[num_book].author << endl;
+		cout << science_fiction[num_book].discription << endl;
+		cout << science_fiction[num_book].type << endl;
+		cout << science_fiction[num_book].status << endl;
+		cout << science_fiction[num_book].price << endl;
+		cout << science_fiction[num_book].numofpages << endl;
+		cout << science_fiction[num_book].review << endl;
+	}
+
+
+}
+
+void sections()
+{
+	int section_num;
+
+	cout << "1 - Fantasy\n" << "2 - Mystery\n" << "3 - Romantic\n" << "4 - Non fiction\n" << "5 - Scientific fiction\n";
+
+	cout << "Please enter the number of the section : ";
+
+	cin >> section_num;
+
+	if (section_num == 1)
+	{
+		for (int i = 0; i < fantasy_num; i++)
+			cout << i + 1 << " - " << fantasy[i].title << endl;
+
+	}
+
+
+	else if (section_num == 2)
+	{
+		for (int i = 0; i < mystery_num; i++)
+			cout << i + 1 << " - " << mystery[i].title << endl;
+	}
+
+	else if (section_num == 3)
+	{
+		for (int i = 0; i < romance_num; i++)
+			cout << i + 1 << " - " << romance[i].title << endl;
+	}
+
+	else if (section_num == 4)
+	{
+		for (int i = 0; i < non_fiction_num; i++)
+			cout << i + 1 << " - " << non_fiction[i].title << endl;
+	}
+
+	else if (section_num == 5)
+	{
+		for (int i = 0; i < science_fiction_num; i++)
+			cout << i + 1 << " - " << science_fiction[i].title << endl;
+	}
+
+	else
+	{
+		cout << "Invalid Section\n";
+		sections();
+	}
+
+	select_book(section_num);
+
+}
+
+
 
 int main()
 {
 	files_to_struct();
-	cout << science_fiction[0].title << "\n";
+	sections();
 	structs_to_files();
 	return 0;
 }
