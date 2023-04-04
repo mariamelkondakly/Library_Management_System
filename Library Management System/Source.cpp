@@ -317,61 +317,60 @@ void select_book(int section_num) // showing the data of a specified book
 	int num_book;
 	cout << "Please Enter the number of the book : ";
 	cin >> num_book;
-
+	cout << endl;
 	if (section_num == 1)
 	{
-		cout << "Author name : " << fantasy[num_book-1].author << endl;
-		cout << "The discription :" << fantasy[num_book-1].discription << endl;
-		cout << "The type of the book : " << fantasy[num_book-1].type << endl;
-		cout << "The status of the book : " << fantasy[num_book-1].status << endl;
-		cout << "The price : " << fantasy[num_book-1].price << endl;
-		cout << "Number of pages : " << fantasy[num_book-1].numofpages << endl;
-		cout << "The rate of the book : " << fantasy[num_book-1].review << endl;
+		cout << "Author name : " << fantasy[num_book-1].author << endl << endl;
+		cout << "The discription :" << fantasy[num_book-1].discription << endl << endl;
+		cout << "The type of the book : " << fantasy[num_book-1].type << endl << endl;
+		cout << "The status of the book : " << fantasy[num_book-1].status << endl << endl;
+		cout << "The price : " << fantasy[num_book-1].price << endl << endl;
+		cout << "Number of pages : " << fantasy[num_book-1].numofpages << endl << endl;
+		cout << "The rate of the book : " << fantasy[num_book-1].review << endl << endl;
 	}
 
 	else if (section_num == 2)
 	{
-		cout << mystery[num_book].author << endl;
-		cout << mystery[num_book].discription << endl;
-		cout << mystery[num_book].type << endl;
-		cout << mystery[num_book].status << endl;
-		cout << mystery[num_book].price << endl;
-		cout << mystery[num_book].numofpages << endl;
-		cout << mystery[num_book].review << endl;
+		cout << "Author name : " << mystery[num_book - 1].author << endl << endl;
+		cout << "The discription :" << mystery[num_book - 1].discription << endl << endl;
+		cout << "The type of the book : " << mystery[num_book - 1].type << endl << endl;
+		cout << "The status of the book : " << mystery[num_book - 1].status << endl << endl;
+		cout << "The price : " << mystery[num_book - 1].price << endl << endl;
+		cout << "Number of pages : " << mystery[num_book - 1].numofpages << endl << endl;
+		cout << "The rate of the book : " << mystery[num_book - 1].review << endl << endl;
 	}
 
 	else if (section_num == 3)
 	{
-		cout << romance[num_book].author << endl;
-		cout << romance[num_book].discription << endl;
-		cout << romance[num_book].type << endl;
-		cout << romance[num_book].status << endl;
-		cout << romance[num_book].price << endl;
-		cout << romance[num_book].numofpages << endl;
-		cout << romance[num_book].review << endl;
+		cout << "Author name : " << romance[num_book - 1].author << endl << endl;
+		cout << "The discription :" << romance[num_book - 1].discription << endl << endl;
+		cout << "The type of the book : " << romance[num_book - 1].type << endl << endl;
+		cout << "The status of the book : " << romance[num_book - 1].status << endl << endl;
+		cout << "The price : " << romance[num_book - 1].price << endl << endl;
+		cout << "Number of pages : " << romance[num_book - 1].numofpages << endl << endl;
+		cout << "The rate of the book : " << romance[num_book - 1].review << endl << endl;
 	}
 
 	else if (section_num == 4)
 	{
-		cout << non_fiction[num_book].author << endl;
-		cout << non_fiction[num_book].discription << endl;
-		cout << non_fiction[num_book].author << endl;
-		cout << non_fiction[num_book].type << endl;
-		cout << non_fiction[num_book].status << endl;
-		cout << non_fiction[num_book].price << endl;
-		cout << non_fiction[num_book].numofpages << endl;
-		cout << non_fiction[num_book].review << endl;
+		cout << "Author name : " << non_fiction[num_book - 1].author << endl << endl;
+		cout << "The discription :" << non_fiction[num_book - 1].discription << endl << endl;
+		cout << "The type of the book : " << non_fiction[num_book - 1].type << endl << endl;
+		cout << "The status of the book : " << non_fiction[num_book - 1].status << endl;
+		cout << "The price : " << non_fiction[num_book - 1].price << endl << endl;
+		cout << "Number of pages : " << non_fiction[num_book - 1].numofpages << endl << endl;
+		cout << "The rate of the book : " << non_fiction[num_book - 1].review << endl << endl;
 	}
 
 	else if (section_num == 5)
 	{
-		cout << science_fiction[num_book].author << endl;
-		cout << science_fiction[num_book].discription << endl;
-		cout << science_fiction[num_book].type << endl;
-		cout << science_fiction[num_book].status << endl;
-		cout << science_fiction[num_book].price << endl;
-		cout << science_fiction[num_book].numofpages << endl;
-		cout << science_fiction[num_book].review << endl;
+		cout << "Author name : " << science_fiction[num_book - 1].author << endl << endl;
+		cout << "The discription :" << science_fiction[num_book - 1].discription << endl << endl;
+		cout << "The type of the book : " << science_fiction[num_book - 1].type << endl << endl;
+		cout << "The status of the book : " << science_fiction[num_book - 1].status << endl << endl;
+		cout << "The price : " << science_fiction[num_book - 1].price << endl << endl;
+		cout << "Number of pages : " << science_fiction[num_book - 1].numofpages << endl << endl;
+		cout << "The rate of the book : " << science_fiction[num_book - 1].review << endl << endl;
 	}
 
 
