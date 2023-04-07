@@ -317,44 +317,54 @@ void editbook(book& edit)
 	int choice;
 	char x;
 
-	cout << "Do you want to edit information for this book   ";
+	cout << "Do you want to edit information for this book?  ";
 	cin >> x;
 	if (x == 'y' || x == 'Y')
 	{
 		do{
-			
-			cout << "1: edit auther name\n\n";
-			cout << "2: edit discription\n\n";
-			cout << "3: edit type\n\n";
-			cout << "4: edit status\n\n";
-			cout << "5: edit price\n\n";
-			cout << "6: edit number of pages\n\n";
-			cout << "7: edit review\n\n";
+			cout << "1: edit title\n\n";
+			cout << "2: edit auther name\n\n";
+			cout << "3: edit discription\n\n";
+			cout << "4: edit type\n\n";
+			cout << "5: edit status\n\n";
+			cout << "6: edit price\n\n";
+			cout << "7: edit number of pages\n\n";
+			cout << "8: edit review\n\n";
 			cout << "0: back\n\n";
+			cout << "choose the detail you want to edit : ";
 			cin >> choice;
 
 			switch (choice)
 			{
-			case 1:cout << "enter new author name";
+			case 1:cout << "enter new title : ";
+				cin.ignore();
+				getline(cin, edit.title);
+				break;
+			case 2:cout << "enter new author name : ";
 				cin.ignore();
 				getline(cin, edit.author);
 				break;
-			case 2:cout << "enter new discription";
+			case 3:cout << "enter new discription : ";
+				cin.ignore();
 				getline(cin, edit.discription);
 				break;
-			case 3:cout << "enter new type";
+			case 4:cout << "enter new type : ";
+				cin.ignore();
 				getline(cin, edit.type);
 				break;
-			case 4: cout << "enter new status";
+			case 5: cout << "enter new status : ";
+				cin.ignore();
 				getline(cin, edit.status);
 				break;
-			case 5:cout << "enter new price";
+			case 6:cout << "enter new price : ";
+				cin.ignore();
 				getline(cin, edit.price);
 				break;
-			case 6:cout << "enter new num of pages";
+			case 7:cout << "enter new num of pages : ";
+				cin.ignore();
 				getline(cin, edit.numofpages);
 				break;
-			case 7:cout << "enter new review";
+			case 8:cout << "enter new review : ";
 				cin.ignore();
 				getline(cin, edit.review);
 				break;
