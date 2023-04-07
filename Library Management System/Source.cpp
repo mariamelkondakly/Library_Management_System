@@ -312,9 +312,70 @@ void structs_to_files()
 	struct_to_scientific_fiction();
 }
 
+void editbook(book& edit)
+{
+	int choice;
+	char x;
+
+	cout << "Do you want to edit information for this book   ";
+	cin >> x;
+	if (x == 'y' || x == 'Y')
+	{
+		do{
+			
+			cout << "1: edit auther name\n\n";
+			cout << "2: edit discription\n\n";
+			cout << "3: edit type\n\n";
+			cout << "4: edit status\n\n";
+			cout << "5: edit price\n\n";
+			cout << "6: edit number of pages\n\n";
+			cout << "7: edit review\n\n";
+			cout << "0: back\n\n";
+			cin >> choice;
+
+			switch (choice)
+			{
+			case 1:cout << "enter new author name";
+				cin.ignore();
+				getline(cin, edit.author);
+				break;
+			case 2:cout << "enter new discription";
+				getline(cin, edit.discription);
+				break;
+			case 3:cout << "enter new type";
+				getline(cin, edit.type);
+				break;
+			case 4: cout << "enter new status";
+				getline(cin, edit.status);
+				break;
+			case 5:cout << "enter new price";
+				getline(cin, edit.price);
+				break;
+			case 6:cout << "enter new num of pages";
+				getline(cin, edit.numofpages);
+				break;
+			case 7:cout << "enter new review";
+				cin.ignore();
+				getline(cin, edit.review);
+				break;
+			}
+		} while (choice != 0);
+	}
+
+	else if (x == 'n' || x == 'N')
+		return;
+
+	else
+	{
+		cout << " invalid choice\n\n";
+		editbook(edit);
+	}
+}
+
 void select_book(int section_num) // showing the data of a specified book
 {
 	int num_book;
+	char x;
 	cout << "Please Enter the number of the book : ";
 	cin >> num_book;
 	cout << endl;
@@ -327,6 +388,8 @@ void select_book(int section_num) // showing the data of a specified book
 		cout << "The price : " << fantasy[num_book-1].price << endl << endl;
 		cout << "Number of pages : " << fantasy[num_book-1].numofpages << endl << endl;
 		cout << "The rate of the book : " << fantasy[num_book-1].review << endl << endl;
+
+		editbook(fantasy[num_book]);
 	}
 
 	else if (section_num == 2)
@@ -338,6 +401,7 @@ void select_book(int section_num) // showing the data of a specified book
 		cout << "The price : " << mystery[num_book - 1].price << endl << endl;
 		cout << "Number of pages : " << mystery[num_book - 1].numofpages << endl << endl;
 		cout << "The rate of the book : " << mystery[num_book - 1].review << endl << endl;
+		editbook(mystery[num_book]);
 	}
 
 	else if (section_num == 3)
@@ -349,6 +413,7 @@ void select_book(int section_num) // showing the data of a specified book
 		cout << "The price : " << romance[num_book - 1].price << endl << endl;
 		cout << "Number of pages : " << romance[num_book - 1].numofpages << endl << endl;
 		cout << "The rate of the book : " << romance[num_book - 1].review << endl << endl;
+		editbook(romance[num_book]);
 	}
 
 	else if (section_num == 4)
@@ -360,6 +425,7 @@ void select_book(int section_num) // showing the data of a specified book
 		cout << "The price : " << non_fiction[num_book - 1].price << endl << endl;
 		cout << "Number of pages : " << non_fiction[num_book - 1].numofpages << endl << endl;
 		cout << "The rate of the book : " << non_fiction[num_book - 1].review << endl << endl;
+		editbook(non_fiction[num_book]);
 	}
 
 	else if (section_num == 5)
@@ -371,6 +437,7 @@ void select_book(int section_num) // showing the data of a specified book
 		cout << "The price : " << science_fiction[num_book - 1].price << endl << endl;
 		cout << "Number of pages : " << science_fiction[num_book - 1].numofpages << endl << endl;
 		cout << "The rate of the book : " << science_fiction[num_book - 1].review << endl << endl;
+		editbook(science_fiction[num_book]);
 	}
 
 
@@ -427,6 +494,26 @@ void sections()
 	select_book(section_num);
 
 }
+
+
+/*void addbook() {
+	cout << "enter authorname  : ";
+	getline(cin, book.author);
+	cout << "enter the discription  :  ";
+	getline(cin, book.discription);
+	cout << "enter the type  :  ";
+	cin >> book.type;
+	cout << "enter the status  :  ";
+	getline(cin, book.status);
+	cout << "enter price  :  ";
+	cin >> book.price;
+	cout << "enter numper of pages  :  ";
+	cin >> book.numofpages;
+	cin.ignore();
+	cout << "enter review";
+	getline(cin, book.review);
+}*/
+
 
 
 
