@@ -1,7 +1,127 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include<conio.h>
 using namespace std;
+void registerUser(bool isAdmin)
+{
+	string username, password;
+	cout << "Select a username: ";
+	cin >> username;
+	char ch;
+
+	cout << "Enter your password: ";
+	cin >> password;
+
+	// Read password character by character
+	while ((ch = _getch()) != '\r') {
+		// Replace each character with an asterisk
+		cout << '*';
+		password += ch; // Add character to the password string
+	}
+
+	ofstream outfile;
+	outfile.open("ourfile.txt", ios::out);
+	if (outfile.is_open())
+	{
+		if (isAdmin) {
+			outfile << "admin" << endl;
+		}
+		else {
+			outfile << "user" << endl;
+		}
+		outfile << username << endl << password << endl;
+
+	}
+	outfile.close();
+}
+void isLoggedIn()
+{
+	string username, password, userType, un, pw;
+	cout << "Enter a username: ";
+	cin >> username;
+	cout << "Enter a password: ";
+	char ch;
+
+	// Read password character by character
+	while ((ch = _getch()) != '\r') {
+
+		cout << '*';
+		password += ch; // Add character to the password string
+	}
+
+	cout << endl;
+	ifstream read("ourfile.txt");
+	while (getline(read, userType))
+	{
+		getline(read, un);
+		getline(read, pw);
+		if (un == username && pw == password && userType == "admin")
+		{
+			cout << "Successfully logged in as an admin!" << endl;
+		}
+		else if (un == username && pw == password && userType == "user") {
+
+			cout << "Successfully logged in as an User!" << endl;
+		}
+		else {
+			cout << "Invalid username or password, please try again!";
+			cout << endl;
+			isLoggedIn();
+		}
+	}
+
+
+}
+
+void registrationMenu() {
+	int choice;
+	cout << "1: Register as an admin\n2: Register as a user\nYour choice: ";
+	cin >> choice;
+	if (choice == 1)
+	{
+		registerUser(true); // Register an admin
+		cout << "Admin registered successfully!" << endl;
+	}
+	else if (choice == 2)
+	{
+		registerUser(false); // Register a regular user
+		cout << "User registered successfully!" << endl;
+	}
+	// else if (choice == 3)
+  //   {
+   //      return; // Logout and return to registration menu
+	// }
+
+	else {
+		cout << "Invalid input. Please enter 1 or 2." << endl;
+	}
+}
+
+void welcome()
+{
+	cout << "\t\t----------Welcome to 6Ms library----------\t\t" << endl;
+	int choice;
+	cout << "1: Login\n2: Register\n\nYour choice: ";
+
+	cin >> choice;
+	if (choice == 1)
+	{
+		isLoggedIn();
+
+	}
+	else if (choice == 2)
+	{
+		registrationMenu();
+	}
+	else {
+		cout << "Invalid input. Please enter 1 or 2 ." << endl;
+	}
+
+}
+void logout() {
+	welcome();
+}
 
 const int arrsize = 10000;
 int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10;
@@ -529,6 +649,7 @@ void sections()
 
 int main()
 {
+	welcome();
 	files_to_struct();
 	sections();
 	structs_to_files();
