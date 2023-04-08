@@ -3,37 +3,58 @@
 #include <fstream>
 #include<conio.h>
 using namespace std;
-void registerUser(bool isAdmin)
+void registerUser()
 {
 	string username, password;
-	cout << "Select a username: ";
+	int choice;
+	cout << "1: Register as an admin\n2: Register as a user\nYour choice: ";
+	cin >> choice;
+	cout << "Enter a username: ";
 	cin >> username;
 	char ch;
 
 	cout << "Enter your password: ";
-	cin >> password;
+
 
 	// Read password character by character
 	while ((ch = _getch()) != '\r') {
-		// Replace each character with an asterisk
+		
 		cout << '*';
 		password += ch; // Add character to the password string
 	}
+
 
 	ofstream outfile;
 	outfile.open("ourfile.txt", ios::out);
 	if (outfile.is_open())
 	{
-		if (isAdmin) {
+		if (choice==1) {
 			outfile << "admin" << endl;
 		}
-		else {
+		else if(choice==2){
 			outfile << "user" << endl;
 		}
 		outfile << username << endl << password << endl;
 
 	}
 	outfile.close();
+	if (choice == 1)
+	{
+		 // Register an admin
+		cout << endl;
+		cout << "Admin registered successfully!" << endl;
+	}
+	else if (choice == 2)
+	{
+		 // Register a regular user
+		cout << endl;
+		cout << "User registered successfully!" << endl;
+	}
+
+	else {
+		cout << endl;
+		cout << "Invalid input. Please enter 1 or 2." << endl;
+	}
 }
 void isLoggedIn()
 {
@@ -74,29 +95,7 @@ void isLoggedIn()
 
 }
 
-void registrationMenu() {
-	int choice;
-	cout << "1: Register as an admin\n2: Register as a user\nYour choice: ";
-	cin >> choice;
-	if (choice == 1)
-	{
-		registerUser(true); // Register an admin
-		cout << "Admin registered successfully!" << endl;
-	}
-	else if (choice == 2)
-	{
-		registerUser(false); // Register a regular user
-		cout << "User registered successfully!" << endl;
-	}
-	// else if (choice == 3)
-  //   {
-   //      return; // Logout and return to registration menu
-	// }
 
-	else {
-		cout << "Invalid input. Please enter 1 or 2." << endl;
-	}
-}
 
 void welcome()
 {
@@ -112,7 +111,8 @@ void welcome()
 	}
 	else if (choice == 2)
 	{
-		registrationMenu();
+		
+		registerUser();
 	}
 	else {
 		cout << "Invalid input. Please enter 1 or 2 ." << endl;
