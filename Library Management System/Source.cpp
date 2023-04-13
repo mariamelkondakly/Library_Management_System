@@ -1,7 +1,22 @@
 #include <iostream>
 #include<string>
 using namespace std;
+const int arrsize = 10000;
+int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10;
 struct book
+{
+	string title;
+	string author;
+	string discription;
+	string type;
+	string status;
+	string price;
+	string numofpages;
+	string review;
+
+} fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
+
+struct delete_book
 {
 	string author;
 	string discription;
@@ -99,6 +114,45 @@ void options()
 	} while (choices != 0);
 
 }
+
+void delete_book(int section_index, int book_index) {
+	if (section_index == 0) {
+		for (int i = book_index;i < fantasy_num - 1;i++) {
+			fantasy[i] = fantasy[i + 1];
+		}
+		fantasy_num--;
+	}
+	else if(section_index == 1)
+	{  
+		for (int i = book_index;i < mystery_num - 1;i++) {
+			mystery[i] = mystery[i + 1];
+		}
+		mystery_num--;
+	}
+	else if (section_index == 2)
+	{
+		for (int i = book_index;i < romance_num - 1;i++) {
+			romance[i] = romance[i + 1];
+		}
+		romance_num--;
+	}
+	else if (section_index == 3)
+	{
+		for (int i = book_index;i < non_fiction_num - 1;i++) {
+			non_fiction[i] = non_fiction[i + 1];
+		}
+		non_fiction_num--;
+	}
+	else if (section_index == 4)
+	{
+		for (int i = book_index;i < science_fiction_num - 1;i++) {
+			science_fiction[i] = science_fiction[i + 1];
+		}
+		science_fiction_num--;
+	}
+}
+
+
 int main()
 {
 	addbook();
