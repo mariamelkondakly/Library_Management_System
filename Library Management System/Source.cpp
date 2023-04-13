@@ -22,6 +22,31 @@ struct book
 	string review;
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
+
+struct Add_book
+{
+	string author;
+	string discription;
+	string type;
+	string status;
+	int price;
+	int numofpages;
+	string review;
+
+}book_to_add;
+
+struct delete_book
+{
+	string author;
+	string discription;
+	string type;
+	string status;
+	int price;
+	int numofpages;
+	string review;
+
+}book_to_delete;
+
 //******************************	End of Book struct	*************************
 //******************************	Start of transitions	*************************
 void file_to_fantasy()
@@ -320,6 +345,8 @@ int select_book(int section_num);
 int sections();
 void user_sequence();
 void admin_sequence();
+void admin_options(int section_num, int book_num);
+void addbook();
 
 int main()
 {
@@ -438,7 +465,7 @@ void logout() {
 }
 
 //******************************	End of welcome / login / register / logout	*************************
-//******************************	Start Edit book					*************************
+//******************************	Start Edit / add / delete book					*************************
 
 void editbook(book& Book_to_Edit)
 {
@@ -497,7 +524,62 @@ void editbook(book& Book_to_Edit)
 	} while (choice != 0);
 }
 
-//******************************	End Edit book					*************************
+void addbook() {
+	cout << "enter authorname  : ";
+	getline(cin, book_to_add.author);
+	cout << "enter the discription  :  ";
+	getline(cin, book_to_add.discription);
+	cout << "enter the type  :  ";
+	cin >> book_to_add.type;
+	cout << "enter the status  :  ";
+	getline(cin, book_to_add.status);
+	cout << "enter price  :  ";
+	cin >> book_to_add.price;
+	cout << "enter numper of pages  :  ";
+	cin >> book_to_add.numofpages;
+	cin.ignore();
+	cout << "enter review";
+	getline(cin, book_to_add.review);
+}
+
+void delete_book(int section_index, int book_index) {
+	if (section_index == 0) {
+		for (int i = book_index;i < fantasy_num - 1;i++) {
+			fantasy[i] = fantasy[i + 1];
+		}
+		fantasy_num--;
+	}
+	else if (section_index == 1)
+	{
+		for (int i = book_index;i < mystery_num - 1;i++) {
+			mystery[i] = mystery[i + 1];
+		}
+		mystery_num--;
+	}
+	else if (section_index == 2)
+	{
+		for (int i = book_index;i < romance_num - 1;i++) {
+			romance[i] = romance[i + 1];
+		}
+		romance_num--;
+	}
+	else if (section_index == 3)
+	{
+		for (int i = book_index;i < non_fiction_num - 1;i++) {
+			non_fiction[i] = non_fiction[i + 1];
+		}
+		non_fiction_num--;
+	}
+	else if (section_index == 4)
+	{
+		for (int i = book_index;i < science_fiction_num - 1;i++) {
+			science_fiction[i] = science_fiction[i + 1];
+		}
+		science_fiction_num--;
+	}
+}
+
+//******************************	End Edit / add / delete book					*************************
 
 int select_book(int section_num)			// showing the data of a specified book
 {
@@ -506,53 +588,53 @@ int select_book(int section_num)			// showing the data of a specified book
 	cout << endl;
 	if (section_num == 1)
 	{
-		cout << "Author name : " << fantasy[book_num - 1].author << "\n";
-		cout << "The description :" << fantasy[book_num - 1].description << "\n";
-		cout << "The type of the book : " << fantasy[book_num - 1].type << "\n";
-		cout << "The status of the book : " << fantasy[book_num - 1].status << "\n";
-		cout << "The price : " << fantasy[book_num - 1].price << "\n";
-		cout << "Number of pages : " << fantasy[book_num - 1].numofpages << "\n";
-		cout << "The rate of the book : " << fantasy[book_num - 1].review << "\n";
+		cout << "Author name : " << fantasy[book_num - 1].author << "\n\n";
+		cout << "The description :" << fantasy[book_num - 1].description << "\n\n";
+		cout << "The type of the book : " << fantasy[book_num - 1].type << "\n\n";
+		cout << "The status of the book : " << fantasy[book_num - 1].status << "\n\n";
+		cout << "The price : " << fantasy[book_num - 1].price << "\n\n";
+		cout << "Number of pages : " << fantasy[book_num - 1].numofpages << "\n\n";
+		cout << "The rate of the book : " << fantasy[book_num - 1].review << "\n\n";
 	}
 	else if (section_num == 2)
 	{
-		cout << "Author name : " << mystery[book_num - 1].author << "\n";
-		cout << "The description :" << mystery[book_num - 1].description << "\n";
-		cout << "The type of the book : " << mystery[book_num - 1].type << "\n";
-		cout << "The status of the book : " << mystery[book_num - 1].status << "\n";
-		cout << "The price : " << mystery[book_num - 1].price << "\n";
-		cout << "Number of pages : " << mystery[book_num - 1].numofpages << "\n";
-		cout << "The rate of the book : " << mystery[book_num - 1].review << "\n";
+		cout << "Author name : " << mystery[book_num - 1].author << "\n\n";
+		cout << "The description :" << mystery[book_num - 1].description << "\n\n";
+		cout << "The type of the book : " << mystery[book_num - 1].type << "\n\n";
+		cout << "The status of the book : " << mystery[book_num - 1].status << "\n\n";
+		cout << "The price : " << mystery[book_num - 1].price << "\n\n";
+		cout << "Number of pages : " << mystery[book_num - 1].numofpages << "\n\n";
+		cout << "The rate of the book : " << mystery[book_num - 1].review << "\n\n";
 	}
 	else if (section_num == 3)
 	{
-		cout << "Author name : " << romance[book_num - 1].author << "\n";
-		cout << "The description :" << romance[book_num - 1].description << "\n";
-		cout << "The type of the book : " << romance[book_num - 1].type << "\n";
-		cout << "The status of the book : " << romance[book_num - 1].status << "\n";
-		cout << "The price : " << romance[book_num - 1].price << "\n";
-		cout << "Number of pages : " << romance[book_num - 1].numofpages << "\n";
-		cout << "The rate of the book : " << romance[book_num - 1].review << "\n";
+		cout << "Author name : " << romance[book_num - 1].author << "\n\n";
+		cout << "The description :" << romance[book_num - 1].description << "\n\n";
+		cout << "The type of the book : " << romance[book_num - 1].type << "\n\n";
+		cout << "The status of the book : " << romance[book_num - 1].status << "\n\n";
+		cout << "The price : " << romance[book_num - 1].price << "\n\n";
+		cout << "Number of pages : " << romance[book_num - 1].numofpages << "\n\n";
+		cout << "The rate of the book : " << romance[book_num - 1].review << "\n\n";
 	}
 	else if (section_num == 4)
 	{
-		cout << "Author name : " << non_fiction[book_num - 1].author << "\n";
-		cout << "The description :" << non_fiction[book_num - 1].description << "\n";
-		cout << "The type of the book : " << non_fiction[book_num - 1].type << "\n";
-		cout << "The status of the book : " << non_fiction[book_num - 1].status << "\n";
-		cout << "The price : " << non_fiction[book_num - 1].price << "\n";
-		cout << "Number of pages : " << non_fiction[book_num - 1].numofpages << "\n";
-		cout << "The rate of the book : " << non_fiction[book_num - 1].review << "\n";
+		cout << "Author name : " << non_fiction[book_num - 1].author << "\n\n";
+		cout << "The description :" << non_fiction[book_num - 1].description << "\n\n";
+		cout << "The type of the book : " << non_fiction[book_num - 1].type << "\n\n";
+		cout << "The status of the book : " << non_fiction[book_num - 1].status << "\n\n";
+		cout << "The price : " << non_fiction[book_num - 1].price << "\n\n";
+		cout << "Number of pages : " << non_fiction[book_num - 1].numofpages << "\n\n";
+		cout << "The rate of the book : " << non_fiction[book_num - 1].review << "\n\n";
 	}
 	else if (section_num == 5)
 	{
-		cout << "Author name : " << science_fiction[book_num - 1].author << "\n";
-		cout << "The description :" << science_fiction[book_num - 1].description << "\n";
-		cout << "The type of the book : " << science_fiction[book_num - 1].type << "\n";
-		cout << "The status of the book : " << science_fiction[book_num - 1].status << "\n";
-		cout << "The price : " << science_fiction[book_num - 1].price << endl << "\n";
-		cout << "Number of pages : " << science_fiction[book_num - 1].numofpages << "\n";
-		cout << "The rate of the book : " << science_fiction[book_num - 1].review << "\n";
+		cout << "Author name : " << science_fiction[book_num - 1].author << "\n\n";
+		cout << "The description :" << science_fiction[book_num - 1].description << "\n\n";
+		cout << "The type of the book : " << science_fiction[book_num - 1].type << "\n\n";
+		cout << "The status of the book : " << science_fiction[book_num - 1].status << "\n\n";
+		cout << "The price : " << science_fiction[book_num - 1].price << endl << "\n\n";
+		cout << "Number of pages : " << science_fiction[book_num - 1].numofpages << "\n\n";
+		cout << "The rate of the book : " << science_fiction[book_num - 1].review << "\n\n";
 	}
 	return book_num;
 }
@@ -604,7 +686,63 @@ void user_sequence() {
 
 void admin_sequence() {
 	int section_num = sections();
-	select_book(section_num);
+	int book_num = select_book(section_num);
+	admin_options(section_num, book_num);
+}
+
+void admin_options(int section_num,int book_num)
+{
+	int choices;
+	do
+	{
+		cout << "1 : add new book\n";
+		cout << "2 : edit book \n";
+		cout << "3 : Delete book \n";
+		cout << "0: return homepage\n";
+		cin >> choices;
+		if (choices == 1) {
+			if (section_num == 1) {
+				addbook();
+			}
+			else if (section_num == 2) {
+				addbook();
+			}
+			else if (section_num == 3) {
+				addbook();
+			}
+			else if (section_num == 4) {
+				addbook();
+			}
+			else if (section_num == 5) {
+				addbook();
+			}
+		}
+		else if (choices == 2) {
+			if (section_num == 1) {
+				editbook(fantasy[book_num - 1]);
+			}
+			else if (section_num == 2) {
+				editbook(mystery[book_num - 1]);
+			}
+			else if (section_num == 3) {
+				editbook(romance[book_num - 1]);
+			}
+			else if (section_num == 4) {
+				editbook(non_fiction[book_num - 1]);
+			}
+			else if (section_num == 5) {
+				editbook(science_fiction[book_num - 1]);
+			}
+		}
+		else if (choices == 3) {
+			delete_book(section_num - 1, book_num - 1);
+		}
+		else {
+			cout << "Invalid input";
+			admin_options(section_num, book_num);
+		}
+	} while (choices != 0);
+
 }
 
 /*void addbook() {
