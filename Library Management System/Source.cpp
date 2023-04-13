@@ -1,8 +1,23 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 #include<conio.h>
 using namespace std;
+
+int string_to_int(string price)			// function to convert string to integer
+{
+	int new_price = 0, c = 1;
+
+	for (int i = price.size() - 1; i >= 0; i--)
+	{
+		new_price += c * (price[i] - '0');
+
+		c *= 10;
+	}
+
+	return new_price;
+}
 
 //******************************	Start of Book struct	*************************
 
@@ -46,6 +61,8 @@ struct delete_book
 	string review;
 
 }book_to_delete;
+
+vector <pair<string, int>>cart_vector;
 
 //******************************	End of Book struct	*************************
 //******************************	Start of transitions	*************************
@@ -347,6 +364,9 @@ void user_sequence();
 void admin_sequence();
 void admin_options(int section_num, int book_num);
 void addbook();
+void add_to_cart(int section_num, int num_book);
+void delete_cart(int book_num);
+void cart();
 
 int main()
 {
@@ -743,6 +763,61 @@ void admin_options(int section_num,int book_num)
 		}
 	} while (choices != 0);
 
+}
+
+void add_to_cart(int section_num, int num_book)
+{
+	int price;
+	if (section_num == 1)
+	{
+		price = string_to_int(fantasy[num_book - 1].price);
+
+		cart_vector.push_back({ fantasy[num_book - 1].title , price });
+	}
+
+	else if (section_num == 2)
+	{
+		price = string_to_int(mystery[num_book - 1].price);
+
+		cart_vector.push_back({ mystery[num_book - 1].title , price });
+	}
+
+	else if (section_num == 3)
+	{
+		price = string_to_int(romance[num_book - 1].price);
+
+		cart_vector.push_back({ romance[num_book - 1].title , price });
+	}
+
+	else if (section_num == 4)
+	{
+		price = string_to_int(non_fiction[num_book - 1].price);
+
+		cart_vector.push_back({ non_fiction[num_book - 1].title , price });
+	}
+
+	else if (section_num == 5)
+	{
+		price = string_to_int(science_fiction[num_book - 1].price);
+
+		cart_vector.push_back({ science_fiction[num_book - 1].title , price });
+	}
+}
+
+void delete_cart(int book_num)
+{
+	//cart_vector.erase(book_num - 1);
+}
+
+void cart()
+{
+	int total_price = 0;
+
+	for (int i = 0; i < cart_vector.size(); i++)
+	{
+		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "\n\n";
+	}
+	cout << "The total price is : " << total_price << "\n\n";
 }
 
 /*void addbook() {
