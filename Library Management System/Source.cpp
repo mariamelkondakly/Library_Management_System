@@ -765,6 +765,8 @@ void admin_options(int section_num,int book_num)
 
 }
 
+						//******************************	Start cart  		*************************
+
 void add_to_cart(int section_num, int num_book)
 {
 	int price;
@@ -819,6 +821,8 @@ void cart()
 	}
 	cout << "The total price is : " << total_price << "\n\n";
 }
+
+						//******************************	End cart			*************************
 
 /*void addbook() {
 	cout << "enter authorname  : ";
