@@ -817,6 +817,7 @@ void cart()
 
 	for (int i = 0; i < cart_vector.size(); i++)
 	{
+		total_price += cart_vector[i].second;
 		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "\n\n";
 	}
 	cout << "The total price is : " << total_price << "\n\n";
