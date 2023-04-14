@@ -40,27 +40,29 @@ struct book
 
 struct Add_book
 {
+	string title;
 	string author;
-	string discription;
+	string description;
 	string type;
 	string status;
-	int price;
-	int numofpages;
+	string price;
+	string numofpages;
 	string review;
 
 }book_to_add;
 
 struct delete_book
 {
+	string title;
 	string author;
 	string discription;
 	string type;
 	string status;
-	int price;
-	int numofpages;
+	string price;
+	string numofpages;
 	string review;
 
-}book_to_delete;
+}book_to_delete[arrsize];
 
 vector <pair<string, int>>cart_vector;
 
@@ -362,7 +364,7 @@ int select_book(int section_num);
 int sections();
 void user_sequence();
 void admin_sequence();
-void admin_options(int section_num, int book_num);
+void admin_options(int section_num);
 void addbook();
 void add_to_cart(int section_num, int num_book);
 void delete_cart(int book_num);
@@ -435,7 +437,7 @@ void registerUser(bool isAdmin)		// register takes boolen value to check if it i
 			outfile << "user" << endl;
 		}
 		outfile << username << endl << password << endl;
-		cout << "\nRegister completed\n";
+		cout << "\nRegistration completed\n";
 		cout << "\n\t\tLog in \n";
 		isLoggedIn();
 	}
@@ -464,17 +466,15 @@ void isLoggedIn()
 		{
 			cout << "Successfully logged in as an admin!" << endl;
 			admin_sequence();
-			return;
 		}
-		else if (user_name == username && password_ == password && userType == "user") {
-			cout << "Successfully logged in as an User!" << endl;
+		else if (user_name == username && password_ == password && userType == "user")
+		{
+			cout << "Successfully logged in as a user!" << endl;
 			user_sequence();
-			return;
 		}
-		else {
-			cout << "Invalid username or password, please try again!";
-			cout << endl;
-			return;
+		else
+		{
+			cout << "Invalid username or password, please try again!" << endl;
 			isLoggedIn();
 		}
 	}
@@ -544,55 +544,61 @@ void editbook(book& Book_to_Edit)
 	} while (choice != 0);
 }
 
-void addbook() {
-	cout << "enter authorname  : ";
+void addbook(int section_num) {
+	cout << "enter book title : ";
+	cin.ignore();
+	getline(cin, book_to_add.title);
+	cout << "enter author name  : ";
 	getline(cin, book_to_add.author);
-	cout << "enter the discription  :  ";
-	getline(cin, book_to_add.discription);
+	cout << "enter the description  :  ";
+	getline(cin, book_to_add.description);
 	cout << "enter the type  :  ";
 	cin >> book_to_add.type;
 	cout << "enter the status  :  ";
 	getline(cin, book_to_add.status);
 	cout << "enter price  :  ";
 	cin >> book_to_add.price;
-	cout << "enter numper of pages  :  ";
+	cout << "enter number of pages  :  ";
 	cin >> book_to_add.numofpages;
 	cin.ignore();
 	cout << "enter review";
 	getline(cin, book_to_add.review);
+	section_num = sections();
 }
 
 void delete_book(int section_index, int book_index) {
-	if (section_index == 0) {
-		for (int i = book_index;i < fantasy_num - 1;i++) {
+	if (section_index == 0)
+	{
+
+		for (int i = book_index; i < fantasy_num - 1; i++) {
 			fantasy[i] = fantasy[i + 1];
 		}
 		fantasy_num--;
 	}
 	else if (section_index == 1)
 	{
-		for (int i = book_index;i < mystery_num - 1;i++) {
+		for (int i = book_index; i < mystery_num - 1; i++) {
 			mystery[i] = mystery[i + 1];
 		}
 		mystery_num--;
 	}
 	else if (section_index == 2)
 	{
-		for (int i = book_index;i < romance_num - 1;i++) {
+		for (int i = book_index; i < romance_num - 1; i++) {
 			romance[i] = romance[i + 1];
 		}
 		romance_num--;
 	}
 	else if (section_index == 3)
 	{
-		for (int i = book_index;i < non_fiction_num - 1;i++) {
+		for (int i = book_index; i < non_fiction_num - 1; i++) {
 			non_fiction[i] = non_fiction[i + 1];
 		}
 		non_fiction_num--;
 	}
 	else if (section_index == 4)
 	{
-		for (int i = book_index;i < science_fiction_num - 1;i++) {
+		for (int i = book_index; i < science_fiction_num - 1; i++) {
 			science_fiction[i] = science_fiction[i + 1];
 		}
 		science_fiction_num--;
@@ -706,66 +712,102 @@ void user_sequence() {
 
 void admin_sequence() {
 	int section_num = sections();
-	int book_num = select_book(section_num);
-	admin_options(section_num, book_num);
+	admin_options(section_num);
 }
 
-void admin_options(int section_num,int book_num)
+void admin_options(int section_num)
 {
-	int choices;
-	do
+	int choices1, choices2, book_num;
+
+	while (true)
 	{
 		cout << "1 : add new book\n";
-		cout << "2 : edit book \n";
-		cout << "3 : Delete book \n";
-		cout << "0: return homepage\n";
-		cin >> choices;
-		if (choices == 1) {
-			if (section_num == 1) {
+		cout << "2 : access books\n";
+		cin >> choices1;
+		if (choices1 == 1)
+		{
+			if (section_num == 1)
+			{
 				addbook();
 			}
-			else if (section_num == 2) {
+			else if (section_num == 2)
+			{
 				addbook();
 			}
-			else if (section_num == 3) {
+			else if (section_num == 3)
+			{
 				addbook();
 			}
-			else if (section_num == 4) {
+			else if (section_num == 4)
+			{
 				addbook();
 			}
-			else if (section_num == 5) {
+			else if (section_num == 5)
+			{
 				addbook();
 			}
+			break;
 		}
-		else if (choices == 2) {
-			if (section_num == 1) {
-				editbook(fantasy[book_num - 1]);
-			}
-			else if (section_num == 2) {
-				editbook(mystery[book_num - 1]);
-			}
-			else if (section_num == 3) {
-				editbook(romance[book_num - 1]);
-			}
-			else if (section_num == 4) {
-				editbook(non_fiction[book_num - 1]);
-			}
-			else if (section_num == 5) {
-				editbook(science_fiction[book_num - 1]);
-			}
-		}
-		else if (choices == 3) {
-			delete_book(section_num - 1, book_num - 1);
-		}
-		else {
-			cout << "Invalid input";
-			admin_options(section_num, book_num);
-		}
-	} while (choices != 0);
+		else if (choices1 == 2)
+		{
+			book_num = select_book(section_num);
+			cout << "1 : edit book \n";
+			cout << "2 : Delete book \n";
+			cout << "0: return homepage\n";
+			while (true)
+			{
+				cin >> choices2;
+				if (choices2 == 1)
+				{
+					if (section_num == 1)
+					{
+						editbook(fantasy[book_num - 1]);
+					}
+					else if (section_num == 2)
+					{
+						editbook(mystery[book_num - 1]);
+					}
+					else if (section_num == 3)
+					{
+						editbook(romance[book_num - 1]);
+					}
+					else if (section_num == 4)
+					{
+						editbook(non_fiction[book_num - 1]);
+					}
+					else if (section_num == 5)
+					{
+						editbook(science_fiction[book_num - 1]);
+					}
+					break;
+				}
 
+				else if (choices2 == 2)
+				{
+					delete_book(section_num - 1, book_num - 1);
+					break;
+				}
+				else if (choices2 == 0)
+				{
+					admin_sequence();
+
+				}
+				else {
+					cout << "Invalid choice! please try again.\n";
+					continue;
+				}
+			}
+		}
+		else
+		{
+			cout << "invalid choice! please try again.\n";
+			admin_options(section_num);
+		}
+		break;
+	}
 }
 
-						//******************************	Start cart  		*************************
+//******************************	Start cart  		*************************
 
 void add_to_cart(int section_num, int num_book)
 {
@@ -823,7 +865,7 @@ void cart()
 	cout << "The total price is : " << total_price << "\n\n";
 }
 
-						//******************************	End cart			*************************
+//******************************	End cart			*************************
 
 /*void addbook() {
 	cout << "enter authorname  : ";
