@@ -1,7 +1,3 @@
-admin
+user
 menna
 123
-admin
-menna
-1234566
-

@@ -22,7 +22,7 @@ int string_to_int(string price)			// function to convert string to integer
 //******************************	Start of Book struct	*************************
 
 const int arrsize = 10000;		// max size to the books 
-int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 9, science_fiction_num = 10; // number of books in each array (section)
+int fantasy_num , mystery_num , romance_num , non_fiction_num , science_fiction_num ; // number of books in each array (section)
 int fantasycounter = 0, mysterycounter = 0, romancecounter = 0, non_fictioncounter = 0, science_fictioncounter = 0;
 
 struct book
@@ -355,6 +355,34 @@ void structs_to_files()
 	struct_to_non_fiction();
 	struct_to_scientific_fiction();
 }
+
+void file_to_counter()
+{
+	ifstream file("bookssize.txt");
+	int i = 0;
+	string line;
+	while (getline(file, line))
+	{
+		cout << line << endl;
+		if (i == 0) { fantasy_num = string_to_int(line); }
+		else if (i == 1) { mystery_num = string_to_int(line); }
+		else if (i == 2) { romance_num = string_to_int(line); }
+		else if (i == 3) { non_fiction_num = string_to_int(line); }
+		else if (i == 4) { science_fiction_num = string_to_int(line); }
+		i++;
+	}
+
+	file.close();
+}
+
+void counetr_to_file()
+{
+	ofstream file("bookssize.txt");
+	file << fantasy_num << endl << mystery_num << endl << romance_num << endl;
+	file << non_fiction_num << endl << science_fiction_num << endl;
+	file.close();
+}
+
 //******************************	 End of transitions		*************************
 int welcome();
 void registerUser(bool isAdmin);
@@ -708,7 +736,38 @@ int sections()
 
 void user_sequence() {
 	int section_num = sections();
-	select_book(section_num);
+	int book_num = select_book(section_num);
+	int user_choice , user_choice2;
+	while (true)
+	{
+		cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
+		if (user_choice == 1) {
+			add_to_cart(section_num, book_num);	 
+			while (true)
+			{
+				cout << "1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
+				if (user_choice2 == 1) {
+					cart();		break;
+				}
+				else if (user_choice2 == 2) {
+					sections();		break;
+				}
+				else {
+					cout << "invalid choice! please try again\n";
+				}
+			}
+			break;
+		}
+		else if (user_choice == 2) {
+			cart();		break;
+		}
+		else if (user_choice == 3) {
+			sections();		break;
+		}
+		else {
+			cout << "invalid choice! please try again\n";
+		}
+	}
 }
 
 void admin_sequence() {
@@ -847,6 +906,7 @@ void add_to_cart(int section_num, int num_book)
 
 		cart_vector.push_back({ science_fiction[num_book - 1].title , price });
 	}
+	cout << "Successfully added !\n";
 }
 
 void delete_cart(int book_num)
@@ -861,9 +921,9 @@ void cart()
 	for (int i = 0; i < cart_vector.size(); i++)
 	{
 		total_price += cart_vector[i].second;
-		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "\n\n";
+		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
 	}
-	cout << "The total price is : " << total_price << "\n\n";
+	cout << "The total price is : " << total_price << "$\n\n";
 }
 
 //******************************	End cart			*************************
