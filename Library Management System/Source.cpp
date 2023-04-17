@@ -756,10 +756,12 @@ void user_sequence() {
 							cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
 							if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0){
 								delete_cart(num_to_delete_from_cart);
+								cart();
+								continue;
 							}
 							else
 							{
-								cout << "Invalid choice !";		continue;
+								cout << "Invalid choice !\n\n";		continue;
 							}
 							cart();
 							break;
@@ -768,7 +770,7 @@ void user_sequence() {
 							user_sequence();		break;
 						}
 						else {
-							cout << "invalid choice! please try again\n";
+							cout << "invalid choice! please try again\n\n";
 						}
 					}
 					break;
@@ -789,7 +791,7 @@ void user_sequence() {
 			user_sequence();		break;
 		}
 		else {
-			cout << "invalid choice! please try again\n";
+			cout << "invalid choice! please try again\n\n";
 		}
 	}
 }
@@ -935,6 +937,7 @@ void add_to_cart(int section_num, int num_book)
 void delete_cart(int book_num)
 {
 	cart_vector.erase(cart_vector.begin()+book_num-1);
+	cout << "Successfully deleted ! \n\n";
 }
 
 void cart()
