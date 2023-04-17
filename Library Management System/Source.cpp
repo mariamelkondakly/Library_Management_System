@@ -847,7 +847,7 @@ void admin_options(int section_num)
 			book_num = select_book(section_num);
 			cout << "1 : edit book \n";
 			cout << "2 : Delete book \n";
-			cout << "0: return homepage\n";
+			cout << "3: return homepage\n";
 			while (true)
 			{
 				cin >> choices2;
@@ -879,9 +879,9 @@ void admin_options(int section_num)
 				else if (choices2 == 2)
 				{
 					delete_book(section_num - 1, book_num - 1);
-					break;
+					continue;
 				}
-				else if (choices2 == 0)
+				else if (choices2 == 3)
 				{
 					admin_sequence();
 
