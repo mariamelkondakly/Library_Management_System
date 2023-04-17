@@ -22,7 +22,7 @@ int string_to_int(string price)			// function to convert string to integer
 //******************************	Start of Book struct	*************************
 
 const int arrsize = 10000;		// max size to the books 
-int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 10, science_fiction_num = 10; // number of books in each array (section)
+int fantasy_num = 10, mystery_num = 11, romance_num = 10, non_fiction_num = 9, science_fiction_num = 10; // number of books in each array (section)
 int fantasycounter = 0, mysterycounter = 0, romancecounter = 0, non_fictioncounter = 0, science_fictioncounter = 0;
 
 struct book
@@ -182,8 +182,9 @@ void file_to_non_fiction()
 				else if (index == 6)    non_fiction[i].numofpages = line;
 				else if (index == 7)    non_fiction[i].review = line;
 				index++;
-				if (line == "##") { non_fictioncounter++; break; }
 				if (index == 8)	break;
+				if (line == "##") { non_fictioncounter++; break; }
+				
 			}
 		}
 	}
@@ -544,7 +545,7 @@ void editbook(book& Book_to_Edit)
 	} while (choice != 0);
 }
 
-void addbook(int section_num) {
+void addbook() {
 	cout << "enter book title : ";
 	cin.ignore();
 	getline(cin, book_to_add.title);
@@ -563,7 +564,7 @@ void addbook(int section_num) {
 	cin.ignore();
 	cout << "enter review";
 	getline(cin, book_to_add.review);
-	section_num = sections();
+	
 }
 
 void delete_book(int section_index, int book_index) {
