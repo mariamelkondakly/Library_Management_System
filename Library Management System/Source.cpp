@@ -495,12 +495,12 @@ void isLoggedIn()
 		if (user_name == username && password_ == password && userType == "admin")
 		{
 			cout << "Successfully logged in as an admin!" << endl;
-			admin_sequence();
+			admin_sequence();		break;
 		}
 		else if (user_name == username && password_ == password && userType == "user")
 		{
 			cout << "Successfully logged in as a user!" << endl;
-			user_sequence();
+			user_sequence();		break;
 		}
 		else
 		{
