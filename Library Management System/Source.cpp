@@ -363,7 +363,6 @@ void file_to_counter()
 	string line;
 	while (getline(file, line))
 	{
-		cout << line << endl;
 		if (i == 0) { fantasy_num = string_to_int(line); }
 		else if (i == 1) { mystery_num = string_to_int(line); }
 		else if (i == 2) { romance_num = string_to_int(line); }
@@ -401,9 +400,11 @@ void cart();
 
 int main()
 {
+	file_to_counter();
 	files_to_struct();
 	welcome();
 	structs_to_files();
+	counetr_to_file();
 	return 0;
 }
 
