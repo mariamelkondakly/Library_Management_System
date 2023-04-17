@@ -738,7 +738,7 @@ int sections()
 void user_sequence() {
 	int section_num = sections();
 	int book_num = select_book(section_num);
-	int user_choice , user_choice2;
+	int user_choice , user_choice2, user_choice3;
 	while (true)
 	{
 		cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
@@ -748,10 +748,26 @@ void user_sequence() {
 			{
 				cout << "1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
 				if (user_choice2 == 1) {
-					cart();		break;
+					cart();	
+					while (true)
+					{
+						cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
+						if (user_choice3 == 1) {
+							delete_cart(book_num);
+							cart();
+							break;
+						}
+						else if (user_choice3 == 2) {
+							user_sequence();		break;
+						}
+						else {
+							cout << "invalid choice! please try again\n";
+						}
+					}
+					break;
 				}
 				else if (user_choice2 == 2) {
-					sections();		break;
+					user_sequence();		break;
 				}
 				else {
 					cout << "invalid choice! please try again\n";
@@ -763,7 +779,7 @@ void user_sequence() {
 			cart();		break;
 		}
 		else if (user_choice == 3) {
-			sections();		break;
+			user_sequence();		break;
 		}
 		else {
 			cout << "invalid choice! please try again\n";
@@ -912,7 +928,7 @@ void add_to_cart(int section_num, int num_book)
 
 void delete_cart(int book_num)
 {
-	//cart_vector.erase(book_num - 1);
+	cart_vector.erase(cart_vector.begin()+book_num-1);
 }
 
 void cart()
