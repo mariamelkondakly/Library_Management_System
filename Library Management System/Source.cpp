@@ -738,7 +738,7 @@ int sections()
 void user_sequence() {
 	int section_num = sections();
 	int book_num = select_book(section_num);
-	int user_choice , user_choice2, user_choice3;
+	int user_choice , user_choice2, user_choice3, num_to_delete_from_cart;
 	while (true)
 	{
 		cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
@@ -753,7 +753,14 @@ void user_sequence() {
 					{
 						cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
 						if (user_choice3 == 1) {
-							delete_cart(book_num);
+							cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
+							if (num_to_delete_from_cart > cart_vector.size() && num_to_delete_from_cart < 0){
+								cout << "Invalid choice !";		continue;
+							}
+							else
+							{
+								delete_cart(num_to_delete_from_cart);
+							}
 							cart();
 							break;
 						}
@@ -871,7 +878,6 @@ void admin_options(int section_num)
 				}
 				else {
 					cout << "Invalid choice! please try again.\n";
-					continue;
 				}
 			}
 		}
