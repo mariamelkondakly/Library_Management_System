@@ -754,12 +754,12 @@ void user_sequence() {
 						cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
 						if (user_choice3 == 1) {
 							cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
-							if (num_to_delete_from_cart > cart_vector.size() && num_to_delete_from_cart < 0){
-								cout << "Invalid choice !";		continue;
+							if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0){
+								delete_cart(num_to_delete_from_cart);
 							}
 							else
 							{
-								delete_cart(num_to_delete_from_cart);
+								cout << "Invalid choice !";		continue;
 							}
 							cart();
 							break;
