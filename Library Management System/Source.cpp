@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include<conio.h>
+#include <conio.h>
 using namespace std;
 
 int string_to_int(string price)			// function to convert string to integer
@@ -476,6 +476,7 @@ void registerUser(bool isAdmin)		// register takes boolen value to check if it i
 
 void isLoggedIn()
 {
+	bool found = false;
 	string username, password, userType, user_name, password_;		//user_name & password_ variables to read from file 
 	cout << "Enter the username: ";		cin >> username;
 	cout << "Enter the password: ";
@@ -495,18 +496,25 @@ void isLoggedIn()
 		if (user_name == username && password_ == password && userType == "admin")
 		{
 			cout << "Successfully logged in as an admin!" << endl;
-			admin_sequence();		break;
+			admin_sequence();
+			found = true;
+			break;
 		}
 		else if (user_name == username && password_ == password && userType == "user")
 		{
 			cout << "Successfully logged in as a user!" << endl;
-			user_sequence();		break;
+			user_sequence();
+			found = true;
+			break;
 		}
 		else
 		{
-			cout << "Invalid username or password, please try again!" << endl;
-			isLoggedIn();
+			continue;
 		}
+	}
+	if (!found){
+		cout << "Invalid username or password \n\n";
+		isLoggedIn();
 	}
 }
 
