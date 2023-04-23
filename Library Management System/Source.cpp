@@ -38,19 +38,6 @@ struct book
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
-struct Add_book
-{
-	string title;
-	string author;
-	string description;
-	string type;
-	string status;
-	string price;
-	string numofpages;
-	string review;
-
-}book_to_add;
-
 struct delete_book
 {
 	string title;
@@ -393,7 +380,7 @@ int sections();
 void user_sequence();
 void admin_sequence();
 void admin_options(int section_num);
-void addbook();
+void addbook(int section_num);
 void add_to_cart(int section_num, int num_book);
 void delete_cart(int book_num);
 void cart();
@@ -582,26 +569,112 @@ void editbook(book& Book_to_Edit)
 	} while (choice != 0);
 }
 
-void addbook() {
-	cout << "enter book title : ";
-	cin.ignore();
-	getline(cin, book_to_add.title);
-	cout << "enter author name  : ";
-	getline(cin, book_to_add.author);
-	cout << "enter the description  :  ";
-	getline(cin, book_to_add.description);
-	cout << "enter the type  :  ";
-	cin >> book_to_add.type;
-	cout << "enter the status  :  ";
-	getline(cin, book_to_add.status);
-	cout << "enter price  :  ";
-	cin >> book_to_add.price;
-	cout << "enter number of pages  :  ";
-	cin >> book_to_add.numofpages;
-	cin.ignore();
-	cout << "enter review";
-	getline(cin, book_to_add.review);
-	
+void addbook(int section_num) {
+	if (section_num == 1) {
+		cout << "enter book title : ";
+		cin.ignore();
+		getline(cin, fantasy[fantasy_num].title);
+		cout << "enter author name  : ";
+		getline(cin, fantasy[fantasy_num].author);
+		cout << "enter the description  :  ";
+		getline(cin, fantasy[fantasy_num].description);
+		cout << "enter the type  :  ";
+		getline(cin, fantasy[fantasy_num].type);
+		cout << "enter the status  :  ";
+		getline(cin, fantasy[fantasy_num].status);
+		cout << "enter price  :  ";
+		cin >> fantasy[fantasy_num].price;
+		cout << "enter number of pages  :  ";
+		cin >> fantasy[fantasy_num].numofpages;
+		cin.ignore();
+		cout << "enter review : ";
+		getline(cin, fantasy[fantasy_num].review);
+		fantasy_num++;
+	}
+	else if (section_num == 2 ){
+		cout << "enter book title : ";
+		cin.ignore();
+		getline(cin, mystery[mystery_num].title);
+		cout << "enter author name  : ";
+		getline(cin, mystery[mystery_num].author);
+		cout << "enter the description  :  ";
+		getline(cin, mystery[mystery_num].description);
+		cout << "enter the type  :  ";
+		getline(cin, mystery[mystery_num].type);
+		cout << "enter the status  :  ";
+		getline(cin, mystery[mystery_num].status);
+		cout << "enter price  :  ";
+		cin >> mystery[mystery_num].price;
+		cout << "enter number of pages  :  ";
+		cin >> mystery[mystery_num].numofpages;
+		cin.ignore();
+		cout << "enter review : ";
+		getline(cin, mystery[mystery_num].review);
+		mystery_num++;
+	}
+	else if (section_num == 3) {
+		cout << "enter book title : ";
+		cin.ignore();
+		getline(cin, romance[romance_num].title);
+		cout << "enter author name  : ";
+		getline(cin, romance[romance_num].author);
+		cout << "enter the description  :  ";
+		getline(cin, romance[romance_num].description);
+		cout << "enter the type  :  ";
+		getline(cin, romance[romance_num].type);
+		cout << "enter the status  :  ";
+		getline(cin, romance[romance_num].status);
+		cout << "enter price  :  ";
+		cin >> romance[romance_num].price;
+		cout << "enter number of pages  :  ";
+		cin >> romance[romance_num].numofpages;
+		cin.ignore();
+		cout << "enter review : ";
+		getline(cin, romance[romance_num].review);
+		romance_num++;
+	}
+	else if (section_num == 4) {
+		cout << "enter book title : ";
+		cin.ignore();
+		getline(cin, non_fiction[non_fiction_num].title);
+		cout << "enter author name  : ";
+		getline(cin, non_fiction[non_fiction_num].author);
+		cout << "enter the description  :  ";
+		getline(cin, non_fiction[non_fiction_num].description);
+		cout << "enter the type  :  ";
+		getline(cin, non_fiction[non_fiction_num].type);
+		cout << "enter the status  :  ";
+		getline(cin, non_fiction[non_fiction_num].status);
+		cout << "enter price  :  ";
+		cin >> non_fiction[non_fiction_num].price;
+		cout << "enter number of pages  :  ";
+		cin >> non_fiction[non_fiction_num].numofpages;
+		cin.ignore();
+		cout << "enter review : ";
+		getline(cin, non_fiction[non_fiction_num].review);
+		non_fiction_num++;
+	}
+	else if (section_num == 5) {
+		cout << "enter book title : ";
+		cin.ignore();
+		getline(cin, science_fiction[science_fiction_num].title);
+		cout << "enter author name  : ";
+		getline(cin, science_fiction[science_fiction_num].author);
+		cout << "enter the description  :  ";
+		getline(cin, science_fiction[science_fiction_num].description);
+		cout << "enter the type  :  ";
+		getline(cin, science_fiction[science_fiction_num].type);
+		cout << "enter the status  :  ";
+		getline(cin, science_fiction[science_fiction_num].status);
+		cout << "enter price  :  ";
+		cin >> science_fiction[science_fiction_num].price;
+		cout << "enter number of pages  :  ";
+		cin >> science_fiction[science_fiction_num].numofpages;
+		cin.ignore();
+		cout << "enter review : ";
+		getline(cin, science_fiction[science_fiction_num].review);
+		science_fiction_num++;
+	}
 }
 
 void delete_book(int section_index, int book_index) {
@@ -822,23 +895,23 @@ void admin_options(int section_num)
 		{
 			if (section_num == 1)
 			{
-				addbook();
+				addbook(section_num);
 			}
 			else if (section_num == 2)
 			{
-				addbook();
+				addbook(section_num);
 			}
 			else if (section_num == 3)
 			{
-				addbook();
+				addbook(section_num);
 			}
 			else if (section_num == 4)
 			{
-				addbook();
+				addbook(section_num);
 			}
 			else if (section_num == 5)
 			{
-				addbook();
+				addbook(section_num);
 			}
 			break;
 		}
