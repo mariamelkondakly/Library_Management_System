@@ -418,7 +418,7 @@ int welcome()
 
 void registerUser(bool isAdmin)		// register takes boolen value to check if it is a user or admin
 {
-	string username, password;
+	string username, password, userType, user_name, password_;
 	cout << "Select a username: ";			cin >> username;
 
 	char ch;
@@ -427,7 +427,16 @@ void registerUser(bool isAdmin)		// register takes boolen value to check if it i
 		cout << '*';
 		password += ch;
 	}
-
+	ifstream read("ourfile.txt");
+	while (getline(read, userType))
+	{
+		getline(read, user_name);
+		getline(read, password_);
+		if (username == user_name) {
+			cout << "\n\nThis username has already been used , Please choose another \n\n";
+			registerUser(isAdmin);
+		}
+	}
 	ofstream outfile;
 	outfile.open("ourfile.txt", ios::app); // Change file open mode to append
 	if (outfile.is_open())
