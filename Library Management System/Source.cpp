@@ -884,7 +884,7 @@ void admin_options()
 	int section_num = sections();
 	while (true)
 	{
-		cout << "1 : add new book\n2 : access books\n3 : Return to home\n";			cin >> choices1;
+		cout << "\n1 : add new book\n2 : access books\n3 : Return to home\n";			cin >> choices1;
 		if (choices1 == 1)
 		{
 			if (section_num == 1)
