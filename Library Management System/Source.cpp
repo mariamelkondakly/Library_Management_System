@@ -38,19 +38,6 @@ struct book
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
-struct delete_book
-{
-	string title;
-	string author;
-	string discription;
-	string type;
-	string status;
-	string price;
-	string numofpages;
-	string review;
-
-}book_to_delete[arrsize];
-
 vector <pair<string, int>>cart_vector;
 
 //******************************	End of Book struct	*************************
