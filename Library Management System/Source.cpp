@@ -917,26 +917,30 @@ void admin_options(int section_num)
 					if (section_num == 1)
 					{
 						editbook(fantasy[book_num - 1]);
+						admin_sequence();
 					}
 					else if (section_num == 2)
 					{
 						editbook(mystery[book_num - 1]);
+						admin_sequence();
 					}
 					else if (section_num == 3)
 					{
 						editbook(romance[book_num - 1]);
+						admin_sequence();
 					}
 					else if (section_num == 4)
 					{
 						editbook(non_fiction[book_num - 1]);
+						admin_sequence();
 					}
 					else if (section_num == 5)
 					{
 						editbook(science_fiction[book_num - 1]);
+						admin_sequence();
 					}
 					break;
 				}
-
 				else if (choices2 == 2)
 				{
 					delete_book(section_num - 1, book_num - 1);
@@ -945,7 +949,6 @@ void admin_options(int section_num)
 				else if (choices2 == 3)
 				{
 					admin_sequence();
-
 				}
 				else {
 					cout << "Invalid choice! please try again.\n";
