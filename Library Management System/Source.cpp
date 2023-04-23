@@ -376,7 +376,6 @@ int main()
 	file_to_counter();
 	files_to_struct();
 	welcome();
-	cout << fantasy[0].title<<"\n";
 	structs_to_files();
 	counetr_to_file();
 	return 0;
@@ -708,6 +707,11 @@ int select_book(int section_num)			// showing the data of a specified book
 	int book_num;
 	cout << "Please Enter the number of the book : ";			cin >> book_num;
 	cout << endl;
+	if ((section_num == 1 && book_num <= fantasy_num) ||
+		(section_num == 2 && book_num <= mystery_num) ||
+		(section_num == 3 && book_num <= romance_num) ||
+		(section_num == 4 && book_num <= non_fiction_num) ||
+		(section_num == 5 && book_num <= science_fiction_num)){ 
 	if (section_num == 1)
 	{
 		cout << "Author name : " << fantasy[book_num - 1].author << "\n\n";
@@ -759,6 +763,11 @@ int select_book(int section_num)			// showing the data of a specified book
 		cout << "The rate of the book : " << science_fiction[book_num - 1].review << "\n\n";
 	}
 	return book_num;
+	}
+	else {
+		cout << "Invalid choice \n\n";
+		select_book(section_num);
+	}
 }
 
 int sections()
@@ -805,61 +814,61 @@ void user_sequence() {
 	int section_num = sections();
 	int book_num = select_book(section_num);
 	int user_choice , user_choice2, user_choice3, num_to_delete_from_cart;
-	while (true)
-	{
-		cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
-		if (user_choice == 1) {
-			add_to_cart(section_num, book_num);	 
-			while (true)
-			{
-				cout << "1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
-				if (user_choice2 == 1) {
-					cart();	
-					while (true)
-					{
-						cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
-						if (user_choice3 == 1) {
-							cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
-							if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0){
-								delete_cart(num_to_delete_from_cart);
+		while (true)
+		{
+			cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
+			if (user_choice == 1) {
+				add_to_cart(section_num, book_num);
+				while (true)
+				{
+					cout << "1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
+					if (user_choice2 == 1) {
+						cart();
+						while (true)
+						{
+							cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
+							if (user_choice3 == 1) {
+								cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
+								if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
+									delete_cart(num_to_delete_from_cart);
+									cart();
+									continue;
+								}
+								else
+								{
+									cout << "Invalid choice !\n\n";		continue;
+								}
 								cart();
-								continue;
+								break;
 							}
-							else
-							{
-								cout << "Invalid choice !\n\n";		continue;
+							else if (user_choice3 == 2) {
+								user_sequence();		break;
 							}
-							cart();
-							break;
+							else {
+								cout << "invalid choice! please try again\n\n";
+							}
 						}
-						else if (user_choice3 == 2) {
-							user_sequence();		break;
-						}
-						else {
-							cout << "invalid choice! please try again\n\n";
-						}
+						break;
 					}
-					break;
+					else if (user_choice2 == 2) {
+						user_sequence();		break;
+					}
+					else {
+						cout << "invalid choice! please try again\n";
+					}
 				}
-				else if (user_choice2 == 2) {
-					user_sequence();		break;
-				}
-				else {
-					cout << "invalid choice! please try again\n";
-				}
+				break;
 			}
-			break;
+			else if (user_choice == 2) {
+				cart();		break;
+			}
+			else if (user_choice == 3) {
+				user_sequence();		break;
+			}
+			else {
+				cout << "invalid choice! please try again\n\n";
+			}
 		}
-		else if (user_choice == 2) {
-			cart();		break;
-		}
-		else if (user_choice == 3) {
-			user_sequence();		break;
-		}
-		else {
-			cout << "invalid choice! please try again\n\n";
-		}
-	}
 }
 
 void admin_options()
@@ -894,6 +903,8 @@ void admin_options()
 			{
 				addbook(section_num);
 			}
+			cout << "Successfully added \n\n";
+			admin_options();
 			break;
 		}
 		else if (choices1 == 2)
@@ -939,6 +950,7 @@ void admin_options()
 					delete_book(section_num - 1, book_num - 1);
 					structs_to_files();
 					counetr_to_file();
+					cout << "Successfully deleted \n\n";
 					admin_options();
 				}
 				else if (choices2 == 3)
