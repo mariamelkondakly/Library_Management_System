@@ -385,9 +385,8 @@ int main()
 
 int welcome()
 {
-	int Admin_User;
-	cout << "\t\t----------Welcome to 6Ms library----------\t\t" << endl;
-	int choice;
+	int Admin_User, choice;
+	cout << "\t\t----------		Welcome to 6Ms library		----------" << "\n\n";
 	cout << "1: Login\n2: Register\n\nYour choice: ";			cin >> choice;
 	if (choice == 1)
 	{
@@ -404,14 +403,14 @@ int welcome()
 			registerUser(false);			// false means that he is not admin ,is a user
 		}
 		else {
-			cout << "Invalid input , please try again.";
+			cout << "\t\tInvalid input , please try again.\n\n";
 			welcome();
 		}
 		return 2;
 	}
 	else
 	{
-		cout << "Invalid input. Please enter 1 or 2 ." << endl;
+		cout << "\t\tInvalid input. Please enter 1 or 2 .\n\n" ;
 		welcome();
 	}
 }
@@ -419,7 +418,7 @@ int welcome()
 void registerUser(bool isAdmin)		// register takes boolen value to check if it is a user or admin
 {
 	string username, password, userType, user_name, password_;
-	cout << "Select a username: ";			cin >> username;
+	cout << "\nSelect a username: ";			cin >> username;
 
 	char ch;
 	cout << "Enter your password: ";
@@ -433,7 +432,7 @@ void registerUser(bool isAdmin)		// register takes boolen value to check if it i
 		getline(read, user_name);
 		getline(read, password_);
 		if (username == user_name) {
-			cout << "\n\nThis username has already been used , Please choose another \n\n";
+			cout << "\n\t\tThis username has already been used , Please choose another \n\n";
 			registerUser(isAdmin);
 		}
 	}
@@ -448,7 +447,7 @@ void registerUser(bool isAdmin)		// register takes boolen value to check if it i
 			outfile << "user" << endl;
 		}
 		outfile << username << endl << password << endl;
-		cout << "\nRegistration completed\n";
+		cout << "\n\t\tRegistration completed\n";
 		cout << "\n\t\tLog in \n";
 		isLoggedIn();
 	}
@@ -459,7 +458,7 @@ void isLoggedIn()
 {
 	bool found = false;
 	string username, password, userType, user_name, password_;		//user_name & password_ variables to read from file 
-	cout << "Enter the username: ";		cin >> username;
+	cout << "\nEnter the username: ";		cin >> username;
 	cout << "Enter the password: ";
 	char ch;
 	while ((ch = _getch()) != '\r') {	// Read password character by character
@@ -476,14 +475,14 @@ void isLoggedIn()
 		getline(read, password_);
 		if (user_name == username && password_ == password && userType == "admin")
 		{
-			cout << "Successfully logged in as an admin!" << endl;
+			cout << "\n\t\tSuccessfully logged in as an admin!\n";
 			admin_options();
 			found = true;
 			break;
 		}
 		else if (user_name == username && password_ == password && userType == "user")
 		{
-			cout << "Successfully logged in as a user!" << endl;
+			cout << "\n\t\tSuccessfully logged in as a user!\n";
 			user_sequence();
 			found = true;
 			break;
@@ -494,7 +493,7 @@ void isLoggedIn()
 		}
 	}
 	if (!found){
-		cout << "Invalid username or password \n\n";
+		cout << "\n\t\tInvalid username or password \n\n";
 		isLoggedIn();
 	}
 }
@@ -510,162 +509,162 @@ void editbook(book& Book_to_Edit)
 {
 	int choice;
 	do {
-		cout << "1: edit title\n\n";
-		cout << "2: edit author name\n\n";
-		cout << "3: edit description\n\n";
-		cout << "4: edit type\n\n";
-		cout << "5: edit status\n\n";
-		cout << "6: edit price\n\n";
-		cout << "7: edit number of pages\n\n";
-		cout << "8: edit review\n\n";
-		cout << "0: back\n\n";
+		cout << "\t1: edit title\n";
+		cout << "\t2: edit author name\n";
+		cout << "\t3: edit description\n";
+		cout << "\t4: edit type\n";
+		cout << "\t5: edit status\n";
+		cout << "\t6: edit price\n";
+		cout << "\t7: edit number of pages\n";
+		cout << "\t8: edit review\n";
+		cout << "\t0: back\n";
 
-		cout << "choose the detail you want to edit : ";		cin >> choice;
+		cout << "Choose the detail you want to edit : ";		cin >> choice;
 
 		switch (choice)
 		{
-		case 1:cout << "enter new title : ";
+		case 1:cout << "\nEnter new title : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.title);
 			break;
-		case 2:cout << "enter new author name : ";
+		case 2:cout << "\nEnter new author name : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.author);
 			break;
-		case 3:cout << "enter new description : ";
+		case 3:cout << "\nEnter new description : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.description);
 			break;
-		case 4:cout << "enter new type : ";
+		case 4:cout << "\nEnter new type : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.type);
 			break;
-		case 5: cout << "enter new status : ";
+		case 5: cout << "\nEnter new status : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.status);
 			break;
-		case 6:cout << "enter new price : ";
+		case 6:cout << "\nEnter new price : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.price);
 			break;
-		case 7:cout << "enter new num of pages : ";
+		case 7:cout << "\nEnter new num of pages : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.numofpages);
 			break;
-		case 8:cout << "enter new review : ";
+		case 8:cout << "\nEnter new review : ";
 			cin.ignore();
 			getline(cin, Book_to_Edit.review);
 			break;
 		}
 
-		cout << "Do you want to edit any other details in this book? (0 to quit editing) ";
+		cout << "\n\t\tDo you want to edit any other details in this book? (0 to quit editing) \n";
 
 	} while (choice != 0);
 }
 
 void addbook(int section_num) {
 	if (section_num == 1) {
-		cout << "enter book title : ";
+		cout << "\nEnter book title : ";
 		cin.ignore();
 		getline(cin, fantasy[fantasy_num].title);
-		cout << "enter author name  : ";
+		cout << "\nEnter author name  : ";
 		getline(cin, fantasy[fantasy_num].author);
-		cout << "enter the description  :  ";
+		cout << "\nEnter the description  :  ";
 		getline(cin, fantasy[fantasy_num].description);
-		cout << "enter the type  :  ";
+		cout << "\nEnter the type  :  ";
 		getline(cin, fantasy[fantasy_num].type);
-		cout << "enter the status  :  ";
+		cout << "\nEnter the status  :  ";
 		getline(cin, fantasy[fantasy_num].status);
-		cout << "enter price  :  ";
+		cout << "\nEnter price  :  ";
 		cin >> fantasy[fantasy_num].price;
-		cout << "enter number of pages  :  ";
+		cout << "\nEnter number of pages  :  ";
 		cin >> fantasy[fantasy_num].numofpages;
 		cin.ignore();
-		cout << "enter review : ";
+		cout << "\nEnter review : ";
 		getline(cin, fantasy[fantasy_num].review);
 		fantasy_num++;
 	}
 	else if (section_num == 2 ){
-		cout << "enter book title : ";
+		cout << "\nEnter book title : ";
 		cin.ignore();
 		getline(cin, mystery[mystery_num].title);
-		cout << "enter author name  : ";
+		cout << "\nEnter author name  : ";
 		getline(cin, mystery[mystery_num].author);
-		cout << "enter the description  :  ";
+		cout << "\nEnter the description  :  ";
 		getline(cin, mystery[mystery_num].description);
-		cout << "enter the type  :  ";
+		cout << "\nEnter the type  :  ";
 		getline(cin, mystery[mystery_num].type);
-		cout << "enter the status  :  ";
+		cout << "\nEnter the status  :  ";
 		getline(cin, mystery[mystery_num].status);
-		cout << "enter price  :  ";
+		cout << "\nEnter price  :  ";
 		cin >> mystery[mystery_num].price;
-		cout << "enter number of pages  :  ";
+		cout << "\nEnter number of pages  :  ";
 		cin >> mystery[mystery_num].numofpages;
 		cin.ignore();
-		cout << "enter review : ";
+		cout << "\nEnter review : ";
 		getline(cin, mystery[mystery_num].review);
 		mystery_num++;
 	}
 	else if (section_num == 3) {
-		cout << "enter book title : ";
+		cout << "\nEnter book title : ";
 		cin.ignore();
 		getline(cin, romance[romance_num].title);
-		cout << "enter author name  : ";
+		cout << "\nEnter author name  : ";
 		getline(cin, romance[romance_num].author);
-		cout << "enter the description  :  ";
+		cout << "\nEnter the description  :  ";
 		getline(cin, romance[romance_num].description);
-		cout << "enter the type  :  ";
+		cout << "\nEnter the type  :  ";
 		getline(cin, romance[romance_num].type);
-		cout << "enter the status  :  ";
+		cout << "\nEnter the status  :  ";
 		getline(cin, romance[romance_num].status);
-		cout << "enter price  :  ";
+		cout << "\nEnter price  :  ";
 		cin >> romance[romance_num].price;
-		cout << "enter number of pages  :  ";
+		cout << "\nEnter number of pages  :  ";
 		cin >> romance[romance_num].numofpages;
 		cin.ignore();
-		cout << "enter review : ";
+		cout << "\nEnter review : ";
 		getline(cin, romance[romance_num].review);
 		romance_num++;
 	}
 	else if (section_num == 4) {
-		cout << "enter book title : ";
+		cout << "\nEnter book title : ";
 		cin.ignore();
 		getline(cin, non_fiction[non_fiction_num].title);
-		cout << "enter author name  : ";
+		cout << "\nEnter author name  : ";
 		getline(cin, non_fiction[non_fiction_num].author);
-		cout << "enter the description  :  ";
+		cout << "\nEnter the description  :  ";
 		getline(cin, non_fiction[non_fiction_num].description);
-		cout << "enter the type  :  ";
+		cout << "\nEnter the type  :  ";
 		getline(cin, non_fiction[non_fiction_num].type);
-		cout << "enter the status  :  ";
+		cout << "\nEnter the status  :  ";
 		getline(cin, non_fiction[non_fiction_num].status);
-		cout << "enter price  :  ";
+		cout << "\nEnter price  :  ";
 		cin >> non_fiction[non_fiction_num].price;
-		cout << "enter number of pages  :  ";
+		cout << "\nEnter number of pages  :  ";
 		cin >> non_fiction[non_fiction_num].numofpages;
 		cin.ignore();
-		cout << "enter review : ";
+		cout << "\nEnter review : ";
 		getline(cin, non_fiction[non_fiction_num].review);
 		non_fiction_num++;
 	}
 	else if (section_num == 5) {
-		cout << "enter book title : ";
+		cout << "\nEnter book title : ";
 		cin.ignore();
 		getline(cin, science_fiction[science_fiction_num].title);
-		cout << "enter author name  : ";
+		cout << "\nEnter author name  : ";
 		getline(cin, science_fiction[science_fiction_num].author);
-		cout << "enter the description  :  ";
+		cout << "\nEnter the description  :  ";
 		getline(cin, science_fiction[science_fiction_num].description);
-		cout << "enter the type  :  ";
+		cout << "\nEnter the type  :  ";
 		getline(cin, science_fiction[science_fiction_num].type);
-		cout << "enter the status  :  ";
+		cout << "\nEnter the status  :  ";
 		getline(cin, science_fiction[science_fiction_num].status);
-		cout << "enter price  :  ";
+		cout << "\nEnter price  :  ";
 		cin >> science_fiction[science_fiction_num].price;
-		cout << "enter number of pages  :  ";
+		cout << "\nEnter number of pages  :  ";
 		cin >> science_fiction[science_fiction_num].numofpages;
 		cin.ignore();
-		cout << "enter review : ";
+		cout << "\nEnter review : ";
 		getline(cin, science_fiction[science_fiction_num].review);
 		science_fiction_num++;
 	}
@@ -714,8 +713,7 @@ void delete_book(int section_index, int book_index) {
 int select_book(int section_num)			// showing the data of a specified book
 {
 	int book_num;
-	cout << "Please Enter the number of the book : ";			cin >> book_num;
-	cout << endl;
+	cout << "\nPlease Enter the number of the book : ";			cin >> book_num;		cout << "\n";
 	if ((section_num == 1 && book_num <= fantasy_num) ||
 		(section_num == 2 && book_num <= mystery_num) ||
 		(section_num == 3 && book_num <= romance_num) ||
@@ -724,7 +722,7 @@ int select_book(int section_num)			// showing the data of a specified book
 	if (section_num == 1)
 	{
 		cout << "Author name : " << fantasy[book_num - 1].author << "\n\n";
-		cout << "The description :" << fantasy[book_num - 1].description << "\n\n";
+		cout << "The description :" << "\n\t\t" << fantasy[book_num - 1].description << "\n\n";
 		cout << "The type of the book : " << fantasy[book_num - 1].type << "\n\n";
 		cout << "The status of the book : " << fantasy[book_num - 1].status << "\n\n";
 		cout << "The price : " << fantasy[book_num - 1].price << "\n\n";
@@ -734,7 +732,7 @@ int select_book(int section_num)			// showing the data of a specified book
 	else if (section_num == 2)
 	{
 		cout << "Author name : " << mystery[book_num - 1].author << "\n\n";
-		cout << "The description :" << mystery[book_num - 1].description << "\n\n";
+		cout << "The description :" << "\n\t\t" << mystery[book_num - 1].description << "\n\n";
 		cout << "The type of the book : " << mystery[book_num - 1].type << "\n\n";
 		cout << "The status of the book : " << mystery[book_num - 1].status << "\n\n";
 		cout << "The price : " << mystery[book_num - 1].price << "\n\n";
@@ -744,7 +742,7 @@ int select_book(int section_num)			// showing the data of a specified book
 	else if (section_num == 3)
 	{
 		cout << "Author name : " << romance[book_num - 1].author << "\n\n";
-		cout << "The description :" << romance[book_num - 1].description << "\n\n";
+		cout << "The description :" << "\n\t\t" << romance[book_num - 1].description << "\n\n";
 		cout << "The type of the book : " << romance[book_num - 1].type << "\n\n";
 		cout << "The status of the book : " << romance[book_num - 1].status << "\n\n";
 		cout << "The price : " << romance[book_num - 1].price << "\n\n";
@@ -754,7 +752,7 @@ int select_book(int section_num)			// showing the data of a specified book
 	else if (section_num == 4)
 	{
 		cout << "Author name : " << non_fiction[book_num - 1].author << "\n\n";
-		cout << "The description :" << non_fiction[book_num - 1].description << "\n\n";
+		cout << "The description :" << "\n\t\t" << non_fiction[book_num - 1].description << "\n\n";
 		cout << "The type of the book : " << non_fiction[book_num - 1].type << "\n\n";
 		cout << "The status of the book : " << non_fiction[book_num - 1].status << "\n\n";
 		cout << "The price : " << non_fiction[book_num - 1].price << "\n\n";
@@ -764,17 +762,17 @@ int select_book(int section_num)			// showing the data of a specified book
 	else if (section_num == 5)
 	{
 		cout << "Author name : " << science_fiction[book_num - 1].author << "\n\n";
-		cout << "The description :" << science_fiction[book_num - 1].description << "\n\n";
+		cout << "The description :" << "\n\t\t" << science_fiction[book_num - 1].description << "\n\n";
 		cout << "The type of the book : " << science_fiction[book_num - 1].type << "\n\n";
 		cout << "The status of the book : " << science_fiction[book_num - 1].status << "\n\n";
-		cout << "The price : " << science_fiction[book_num - 1].price << endl << "\n\n";
+		cout << "The price : " << science_fiction[book_num - 1].price << "\n\n";
 		cout << "Number of pages : " << science_fiction[book_num - 1].numofpages << "\n\n";
 		cout << "The rate of the book : " << science_fiction[book_num - 1].review << "\n\n";
 	}
 	return book_num;
 	}
 	else {
-		cout << "Invalid choice \n\n";
+		cout << "\t\tInvalid choice \n\n";
 		select_book(section_num);
 	}
 }
@@ -783,9 +781,9 @@ int sections()
 {
 	int section_num;
 
-	cout << "1 - Fantasy\n" << "2 - Mystery\n" << "3 - Romantic\n" << "4 - Non fiction\n" << "5 - Scientific fiction\n";
-	cout << "Please enter the number of the section : ";			cin >> section_num;
-
+	cout << "\n1 - Fantasy\n" << "2 - Mystery\n" << "3 - Romantic\n" << "4 - Non fiction\n" << "5 - Scientific fiction\n";
+	cout << "\nPlease enter the number of the section : ";			cin >> section_num;
+	cout << "\n";
 	if (section_num == 1)
 	{
 		for (int i = 0; i < fantasy_num; i++)
@@ -813,7 +811,7 @@ int sections()
 	}
 	else
 	{
-		cout << "Invalid Section\n";
+		cout << "\n\t\tInvalid Section\n\n";
 		sections();
 	}
 	return section_num;
@@ -830,14 +828,14 @@ void user_sequence() {
 				add_to_cart(section_num, book_num);
 				while (true)
 				{
-					cout << "1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
+					cout << "\n1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
 					if (user_choice2 == 1) {
 						cart();
 						while (true)
 						{
-							cout << "1-delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
+							cout << "\n1-Delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
 							if (user_choice3 == 1) {
-								cout << "Which book do you want to delete : ";		cin >> num_to_delete_from_cart;
+								cout << "\nWhich book do you want to delete : ";		cin >> num_to_delete_from_cart;
 								if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
 									delete_cart(num_to_delete_from_cart);
 									cart();
@@ -845,7 +843,7 @@ void user_sequence() {
 								}
 								else
 								{
-									cout << "Invalid choice !\n\n";		continue;
+									cout << "\n\t\tInvalid choice !\n\n";		continue;
 								}
 								cart();
 								break;
@@ -854,7 +852,7 @@ void user_sequence() {
 								user_sequence();		break;
 							}
 							else {
-								cout << "invalid choice! please try again\n\n";
+								cout << "\n\t\tInvalid choice! please try again\n\n";
 							}
 						}
 						break;
@@ -863,7 +861,7 @@ void user_sequence() {
 						user_sequence();		break;
 					}
 					else {
-						cout << "invalid choice! please try again\n";
+						cout << "\n\t\tInvalid choice! please try again\n\n";
 					}
 				}
 				break;
@@ -875,7 +873,7 @@ void user_sequence() {
 				user_sequence();		break;
 			}
 			else {
-				cout << "invalid choice! please try again\n\n";
+				cout << "\n\t\tInvalid choice! please try again\n\n";
 			}
 		}
 }
@@ -886,10 +884,7 @@ void admin_options()
 	int section_num = sections();
 	while (true)
 	{
-		cout << "1 : add new book\n";
-		cout << "2 : access books\n";
-		cout << "3 : Return to home\n";
-		cin >> choices1;
+		cout << "1 : add new book\n2 : access books\n3 : Return to home\n";			cin >> choices1;
 		if (choices1 == 1)
 		{
 			if (section_num == 1)
@@ -912,16 +907,14 @@ void admin_options()
 			{
 				addbook(section_num);
 			}
-			cout << "Successfully added \n\n";
+			cout << "\n\t\tSuccessfully added \n\n";
 			admin_options();
 			break;
 		}
 		else if (choices1 == 2)
 		{
 			book_num = select_book(section_num);
-			cout << "1 : edit book \n";
-			cout << "2 : Delete book \n";
-			cout << "3: return homepage\n";
+			cout << "1 : edit book \n2 : Delete book \n3: return homepage\n";
 			while (true)
 			{
 				cin >> choices2;
@@ -959,7 +952,7 @@ void admin_options()
 					delete_book(section_num - 1, book_num - 1);
 					structs_to_files();
 					counetr_to_file();
-					cout << "Successfully deleted \n\n";
+					cout << "\n\t\tSuccessfully deleted \n\n";
 					admin_options();
 				}
 				else if (choices2 == 3)
@@ -967,7 +960,7 @@ void admin_options()
 					admin_options();
 				}
 				else {
-					cout << "Invalid choice! please try again.\n";
+					cout << "\n\t\tInvalid choice! please try again.\n\n";
 				}
 			}
 		}
@@ -976,7 +969,7 @@ void admin_options()
 		}
 		else
 		{
-			cout << "invalid choice! please try again.\n";
+			cout << "\n\t\tInvalid choice! please try again.\n\n";
 			admin_options();
 		}
 		break;
@@ -1022,69 +1015,25 @@ void add_to_cart(int section_num, int num_book)
 
 		cart_vector.push_back({ science_fiction[num_book - 1].title , price });
 	}
-	cout << "Successfully added !\n";
+	cout << "\n\t\tSuccessfully added !\n\n";
 }
 
 void delete_cart(int book_num)
 {
 	cart_vector.erase(cart_vector.begin()+book_num-1);
-	cout << "Successfully deleted ! \n\n";
+	cout << "\n\t\tSuccessfully deleted ! \n";
 }
 
 void cart()
 {
 	int total_price = 0;
-
+	cout << "\n";
 	for (int i = 0; i < cart_vector.size(); i++)
 	{
 		total_price += cart_vector[i].second;
 		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
 	}
-	cout << "The total price is : " << total_price << "$\n\n";
+	cout << "\n\tThe total price is : " << total_price << "$\n\n";
 }
 
 //******************************	End cart			*************************
-
-/*void addbook() {
-	cout << "enter authorname  : ";
-	getline(cin, book.author);
-	cout << "enter the discription  :  ";
-	getline(cin, book.discription);
-	cout << "enter the type  :  ";
-	cin >> book.type;
-	cout << "enter the status  :  ";
-	getline(cin, book.status);
-	cout << "enter price  :  ";
-	cin >> book.price;
-	cout << "enter numper of pages  :  ";
-	cin >> book.numofpages;
-	cin.ignore();
-	cout << "enter review";
-	getline(cin, book.review);
-}*/
-
-/*
-void registrationMenu() {
-	int choice;
-	cout << "1: Register as an admin\n2: Register as a user\nYour choice: ";
-	cin >> choice;
-	if (choice == 1)
-	{
-		registerUser(true); // Register an admin
-		cout << endl;
-		cout << "Admin registered successfully!" << endl;
-	}
-	else if (choice == 2)
-	{
-		registerUser(false); // Register a regular user
-		cout << endl;
-		cout << "User registered successfully!" << endl;
-	}
-
-
-	else {
-		cout << "Invalid input. Please enter 1 or 2." << endl;
-		return;
-	}
-}
-*/
