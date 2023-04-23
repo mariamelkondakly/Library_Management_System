@@ -890,6 +890,7 @@ void admin_options(int section_num)
 	{
 		cout << "1 : add new book\n";
 		cout << "2 : access books\n";
+		cout << "3 : Return to home\n";
 		cin >> choices1;
 		if (choices1 == 1)
 		{
@@ -963,6 +964,9 @@ void admin_options(int section_num)
 					cout << "Invalid choice! please try again.\n";
 				}
 			}
+		}
+		else if (choices1 == 3) {
+			admin_sequence();
 		}
 		else
 		{
