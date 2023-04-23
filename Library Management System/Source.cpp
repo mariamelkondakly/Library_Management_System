@@ -365,8 +365,7 @@ void editbook(book& Book_to_Edit);
 int select_book(int section_num);
 int sections();
 void user_sequence();
-void admin_sequence();
-void admin_options(int section_num);
+void admin_options();
 void addbook(int section_num);
 void add_to_cart(int section_num, int num_book);
 void delete_cart(int book_num);
@@ -377,6 +376,7 @@ int main()
 	file_to_counter();
 	files_to_struct();
 	welcome();
+	cout << fantasy[0].title<<"\n";
 	structs_to_files();
 	counetr_to_file();
 	return 0;
@@ -415,7 +415,6 @@ int welcome()
 		cout << "Invalid input. Please enter 1 or 2 ." << endl;
 		welcome();
 	}
-
 }
 
 void registerUser(bool isAdmin)		// register takes boolen value to check if it is a user or admin
@@ -470,7 +469,7 @@ void isLoggedIn()
 		if (user_name == username && password_ == password && userType == "admin")
 		{
 			cout << "Successfully logged in as an admin!" << endl;
-			admin_sequence();
+			admin_options();
 			found = true;
 			break;
 		}
@@ -667,9 +666,8 @@ void addbook(int section_num) {
 void delete_book(int section_index, int book_index) {
 	if (section_index == 0)
 	{
-
 		for (int i = book_index; i < fantasy_num - 1; i++) {
-			fantasy[i] = fantasy[i + 1];
+			fantasy[i] = fantasy[i + 1];    
 		}
 		fantasy_num--;
 	}
@@ -864,15 +862,10 @@ void user_sequence() {
 	}
 }
 
-void admin_sequence() {
-	int section_num = sections();
-	admin_options(section_num);
-}
-
-void admin_options(int section_num)
+void admin_options()
 {
 	int choices1, choices2, book_num;
-
+	int section_num = sections();
 	while (true)
 	{
 		cout << "1 : add new book\n";
@@ -917,38 +910,40 @@ void admin_options(int section_num)
 					if (section_num == 1)
 					{
 						editbook(fantasy[book_num - 1]);
-						admin_sequence();
+						admin_options();
 					}
 					else if (section_num == 2)
 					{
 						editbook(mystery[book_num - 1]);
-						admin_sequence();
+						admin_options();
 					}
 					else if (section_num == 3)
 					{
 						editbook(romance[book_num - 1]);
-						admin_sequence();
+						admin_options();
 					}
 					else if (section_num == 4)
 					{
 						editbook(non_fiction[book_num - 1]);
-						admin_sequence();
+						admin_options();
 					}
 					else if (section_num == 5)
 					{
 						editbook(science_fiction[book_num - 1]);
-						admin_sequence();
+						admin_options();
 					}
 					break;
 				}
 				else if (choices2 == 2)
 				{
 					delete_book(section_num - 1, book_num - 1);
-					continue;
+					structs_to_files();
+					counetr_to_file();
+					admin_options();
 				}
 				else if (choices2 == 3)
 				{
-					admin_sequence();
+					admin_options();
 				}
 				else {
 					cout << "Invalid choice! please try again.\n";
@@ -956,12 +951,12 @@ void admin_options(int section_num)
 			}
 		}
 		else if (choices1 == 3) {
-			admin_sequence();
+			admin_options();
 		}
 		else
 		{
 			cout << "invalid choice! please try again.\n";
-			admin_options(section_num);
+			admin_options();
 		}
 		break;
 	}
