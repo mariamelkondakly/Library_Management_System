@@ -1023,7 +1023,7 @@ void delete_cart(int book_num)
 	cout << "\n\t\tSuccessfully deleted ! \n";
 }
 
-void cart()
+void cart(bool )
 {
 	int total_price = 0;
 	int user_choice3, num_to_delete_from_cart;
@@ -1031,7 +1031,7 @@ void cart()
 	if (!cart_vector.size()) 
 	{
 		cout << "The cart is empty \n\n";
-		return;
+		user_sequence();
 	}
 
 	else {
