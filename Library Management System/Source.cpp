@@ -823,17 +823,23 @@ void user_sequence() {
 	int user_choice , user_choice2, user_choice3, num_to_delete_from_cart;
 		while (true)
 		{
-			cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n";		cin >> user_choice;
+			cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n\n";		
+			cout << "Please choose an option : ";
+			cin >> user_choice; cout << endl;
 			if (user_choice == 1) {
 				add_to_cart(section_num, book_num);
 				while (true)
 				{
-					cout << "\n1-Go to cart : \n2-Return to home : \n";			cin >> user_choice2;
+					cout << "\n1-Go to cart : \n2-Return to home : \n";		
+					cout << "Please choose an option : ";
+					cin >> user_choice2; cout << endl;
 					if (user_choice2 == 1) {
 						cart();
 						while (true)
 						{
-							cout << "\n1-Delete from cart :\n2-Return to home : \n";		cin >> user_choice3;
+							cout << "\n1-Delete from cart :\n2-Return to home : \n\n";		
+							cout << "Please choose an option : ";
+							cin >> user_choice3; cout << endl;
 							if (user_choice3 == 1) {
 								cout << "\nWhich book do you want to delete : ";		cin >> num_to_delete_from_cart;
 								if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
@@ -981,41 +987,57 @@ void admin_options()
 void add_to_cart(int section_num, int num_book)
 {
 	int price;
+	bool exist = 0; // to check if the book is available or not
+
 	if (section_num == 1)
 	{
 		price = string_to_int(fantasy[num_book - 1].price);
-
+		if (fantasy[num_book - 1].status == "Unavailable" || fantasy[num_book - 1].status == "unavailable")
+			exist = 1;
+		else
 		cart_vector.push_back({ fantasy[num_book - 1].title , price });
 	}
 
 	else if (section_num == 2)
 	{
 		price = string_to_int(mystery[num_book - 1].price);
-
+		if (mystery[num_book - 1].status == "Unavailable" || mystery[num_book - 1].status == "unavailable")
+			exist = 1;
+		else
 		cart_vector.push_back({ mystery[num_book - 1].title , price });
 	}
 
 	else if (section_num == 3)
 	{
 		price = string_to_int(romance[num_book - 1].price);
-
+		if (romance[num_book - 1].status == "Unavailable" || romance[num_book - 1].status == "unavailable")
+			exist = 1;
+		else
 		cart_vector.push_back({ romance[num_book - 1].title , price });
 	}
 
 	else if (section_num == 4)
 	{
 		price = string_to_int(non_fiction[num_book - 1].price);
-
+		if (non_fiction[num_book - 1].status == "Unavailable" || non_fiction[num_book - 1].status == "unavailable")
+			exist = 1;
+		else
 		cart_vector.push_back({ non_fiction[num_book - 1].title , price });
 	}
 
 	else if (section_num == 5)
 	{
 		price = string_to_int(science_fiction[num_book - 1].price);
-
+		if (science_fiction[num_book - 1].status == "Unavailable" || science_fiction[num_book - 1].status == "unavailable")
+			exist = 1;
+		else
 		cart_vector.push_back({ science_fiction[num_book - 1].title , price });
 	}
-	cout << "\n\t\tSuccessfully added !\n\n";
+
+	if (!exist)
+		cout << "\n\t\tSuccessfully added !\n\n";
+	else
+		cout << "\t\tThe book is not available !\n\n";
 }
 
 void delete_cart(int book_num)
@@ -1027,13 +1049,41 @@ void delete_cart(int book_num)
 void cart()
 {
 	int total_price = 0;
+	string choice;
 	cout << "\n";
 	for (int i = 0; i < cart_vector.size(); i++)
 	{
 		total_price += cart_vector[i].second;
 		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
 	}
+
+	if (!total_price) 
+	{
+		cout << "The cart is empty \n\n";
+		return;
+	}
+
 	cout << "\n\tThe total price is : " << total_price << "$\n\n";
+	cout << "Do you want to check out from the cart ?\n\n";
+
+	while (true)
+	{
+		cout << "Please enter yes or no : ";
+		cin >> choice; cout << endl;
+		if (choice == "Yes" || choice == "yes")
+		{
+			cart_vector.clear();
+			cout << "Successfully checked out !\n\n";
+			return;
+		}
+
+		else if (choice != "No" || choice != "no")
+		{
+			cout << "Invalid Chocie ! \n\n";
+			continue;
+		}
+
+	}
 }
 
 //******************************	End cart			*************************
