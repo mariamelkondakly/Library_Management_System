@@ -835,32 +835,6 @@ void user_sequence() {
 					cin >> user_choice2; cout << endl;
 					if (user_choice2 == 1) {
 						cart();
-						while (true)
-						{
-							cout << "\n1-Delete from cart :\n2-Return to home : \n\n";		
-							cout << "Please choose an option : ";
-							cin >> user_choice3; cout << endl;
-							if (user_choice3 == 1) {
-								cout << "\nWhich book do you want to delete : ";		cin >> num_to_delete_from_cart;
-								if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
-									delete_cart(num_to_delete_from_cart);
-									cart();
-									continue;
-								}
-								else
-								{
-									cout << "\n\t\tInvalid choice !\n\n";		continue;
-								}
-								cart();
-								break;
-							}
-							else if (user_choice3 == 2) {
-								user_sequence();		break;
-							}
-							else {
-								cout << "\n\t\tInvalid choice! please try again\n\n";
-							}
-						}
 						break;
 					}
 					else if (user_choice2 == 2) {
@@ -873,7 +847,8 @@ void user_sequence() {
 				break;
 			}
 			else if (user_choice == 2) {
-				cart();		break;
+				cart();	
+				break;
 			}
 			else if (user_choice == 3) {
 				user_sequence();		break;
@@ -913,6 +888,8 @@ void admin_options()
 			{
 				addbook(section_num);
 			}
+			structs_to_files();
+			counetr_to_file();
 			cout << "\n\t\tSuccessfully added \n\n";
 			admin_options();
 			break;
@@ -1049,40 +1026,49 @@ void delete_cart(int book_num)
 void cart()
 {
 	int total_price = 0;
-	string choice;
+	int user_choice3, num_to_delete_from_cart;
 	cout << "\n";
-	for (int i = 0; i < cart_vector.size(); i++)
-	{
-		total_price += cart_vector[i].second;
-		cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
-	}
-
-	if (!total_price) 
+	if (!cart_vector.size()) 
 	{
 		cout << "The cart is empty \n\n";
 		return;
 	}
 
-	cout << "\n\tThe total price is : " << total_price << "$\n\n";
-	cout << "Do you want to check out from the cart ?\n\n";
-
-	while (true)
-	{
-		cout << "Please enter yes or no : ";
-		cin >> choice; cout << endl;
-		if (choice == "Yes" || choice == "yes")
+	else {
+		for (int i = 0; i < cart_vector.size(); i++)
 		{
-			cart_vector.clear();
-			cout << "Successfully checked out !\n\n";
-			return;
+			total_price += cart_vector[i].second;
+			cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
 		}
-
-		else if (choice != "No" || choice != "no")
+		cout << "\n\tThe total price is : " << total_price << "$\n\n";
+		while (true)
 		{
-			cout << "Invalid Chocie ! \n\n";
-			continue;
+			cout << "\n1-Delete from cart :\n2-Checkout : \n3-Return to home : \n\nPlease choose an option : ";		cin >> user_choice3; cout << endl;
+			if (user_choice3 == 1) {
+				cout << "\nWhich book do you want to delete : ";		cin >> num_to_delete_from_cart;
+				if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
+					delete_cart(num_to_delete_from_cart);
+					cart();
+					continue;
+				}
+				else
+				{
+					cout << "\n\t\tInvalid choice !\n\n";		continue;
+				}
+				cart();
+				break;
+			}
+			else if (user_choice3 == 2) {
+				cart_vector.clear();
+				cout << "Successfully checked out !\n\n";
+			}
+			else if (user_choice3 == 3) {
+				user_sequence();		break;
+			}
+			else {
+				cout << "\n\t\tInvalid choice! please try again\n\n";
+			}
 		}
-
 	}
 }
 
