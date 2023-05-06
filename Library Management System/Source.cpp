@@ -913,7 +913,7 @@ void admin_options()
 			while (true)
 			{
 				cout << "\nIt's your options\n\n";
-				cout << "1 : edit book \n2 : Delete book \n3: return homepage\n";
+				cout << "1 : edit book \n2 : Delete book \n3: return homepage\n\n";
 				cout << "Please choose an option : "; cin >> choices2; cout << endl;
 				if (choices2 == 1)
 				{
@@ -933,6 +933,7 @@ void admin_options()
 					else if (section_num == 5)
 				    editbook(science_fiction[book_num - 1]);
 
+					structs_to_files();
 					admin_options();
 					break;
 				}
