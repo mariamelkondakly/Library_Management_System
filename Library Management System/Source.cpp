@@ -23,7 +23,6 @@ int string_to_int(string price)			// function to convert string to integer
 
 const int arrsize = 10000;		// max size to the books 
 int fantasy_num , mystery_num , romance_num , non_fiction_num , science_fiction_num ; // number of books in each array (section)
-int fantasycounter = 0, mysterycounter = 0, romancecounter = 0, non_fictioncounter = 0, science_fictioncounter = 0;
 
 struct book
 {
@@ -53,7 +52,6 @@ void file_to_fantasy()
 	if (file.is_open()) {
 		for (int i = 0; i < fantasy_num; i++) {
 			index = 0;
-			fantasycounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    fantasy[i].title = line;
@@ -66,7 +64,7 @@ void file_to_fantasy()
 				else if (index == 7)    fantasy[i].review = line;
 				else if (index == 8)     fantasy[i].countity = line;
 				index++;
-				if (line == "##") { fantasycounter++; break; }
+				if (line == "##") { break; }
 				if (index == 9)		break;
 			}
 		}
@@ -84,7 +82,6 @@ void file_to_mystery()
 	if (file.is_open()) {
 		for (int i = 0; i < mystery_num; i++) {
 			index = 0;
-			mysterycounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    mystery[i].title = line;
@@ -97,7 +94,7 @@ void file_to_mystery()
 				else if (index == 7)    mystery[i].review = line;
 				else if (index == 8)    mystery[i].countity = line;
 				index++;
-				if (line == "##") { mysterycounter++; break; }
+				if (line == "##") { break; }
 				if (index == 9)	break;
 			}
 		}
@@ -116,7 +113,6 @@ void file_to_romance()
 	if (file.is_open()) {
 		for (int i = 0; i < romance_num; i++) {
 			index = 0;
-			romancecounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    romance[i].title = line;
@@ -129,7 +125,7 @@ void file_to_romance()
 				else if (index == 7)    romance[i].review = line;
 				else if (index == 8)    romance[i].countity = line;
 				index++;
-				if (line == "##") { romancecounter++; break; }
+				if (line == "##") {break; }
 				if (index == 9)	break;
 			}
 		}
@@ -148,7 +144,6 @@ void file_to_non_fiction()
 	if (file.is_open()) {
 		for (int i = 0; i < non_fiction_num; i++) {
 			index = 0;
-			non_fictioncounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    non_fiction[i].title = line;
@@ -162,7 +157,7 @@ void file_to_non_fiction()
 				else if (index == 8)    non_fiction[i].countity = line;
 				index++;
 				if (line == "##") {
-				non_fictioncounter++; break;}
+				 break;}
 				if (index == 9)	break;
 			}
 		}
@@ -180,7 +175,6 @@ void file_to_science_fiction()
 	if (file.is_open()) {
 		for (int i = 0; i < science_fiction_num; i++) {
 			index = 0;
-			science_fictioncounter++;
 			while (getline(file, line))
 			{
 				if (index == 0)    science_fiction[i].title = line;
@@ -193,7 +187,7 @@ void file_to_science_fiction()
 				else if (index == 7)    science_fiction[i].review = line;
 				else if (index == 8)     science_fiction[i].countity = line;
 				index++;
-				if (line == "##") { science_fictioncounter++; break; }
+				if (line == "##") { break; }
 				if (index == 9)	break;
 			}
 		}
@@ -529,7 +523,7 @@ void editbook(book& Book_to_Edit)
 		cout << "\t7: edit number of pages\n";
 		cout << "\t8: edit review\n";
 		cout << "\t9: edit countity\n";
-		cout << "\t0: back\n";
+		cout << "\t0: back\n\n";
 
 		cout << "Choose the detail you want to edit : ";		cin >> choice;
 
@@ -573,7 +567,8 @@ void editbook(book& Book_to_Edit)
 			break;
 		}
 
-		cout << "\n\t\tDo you want to edit any other details in this book? (0 to quit editing) \n";
+		if(choice != 0)
+		cout << "\n\t\tDo you want to edit any other details in this book? (0 to quit editing) \n\n";
 
 	} while (choice != 0);
 
@@ -1092,7 +1087,6 @@ void cart()
 			for (int i = 0; i < cart_vector.size(); i++)
 			{
 				int book_num = cart_vector[i].second,countity;
-
 				if (cart_vector[i].first == 1)
 				{
 					countity = string_to_int(fantasy[book_num - 1].countity);
