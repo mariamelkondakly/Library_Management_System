@@ -576,6 +576,7 @@ void editbook(book& Book_to_Edit)
 		cout << "\n\t\tDo you want to edit any other details in this book? (0 to quit editing) \n";
 
 	} while (choice != 0);
+
 }
 
 void addbook(int section_num) {
@@ -892,29 +893,13 @@ void admin_options()
 	int section_num = sections();
 	while (true)
 	{
-		cout << "\n1 : add new book\n2 : access books\n3 : Return to home\n";			cin >> choices1;
+		cout << "\nIt's your options\n\n";
+		cout << "\n1 : add new book\n2 : access books\n3 : Return to home\n\n";			
+		cout << "Please choose an option : ";  cin >> choices1; cout << endl;
+
 		if (choices1 == 1)
 		{
-			if (section_num == 1)
-			{
-				addbook(section_num);
-			}
-			else if (section_num == 2)
-			{
-				addbook(section_num);
-			}
-			else if (section_num == 3)
-			{
-				addbook(section_num);
-			}
-			else if (section_num == 4)
-			{
-				addbook(section_num);
-			}
-			else if (section_num == 5)
-			{
-				addbook(section_num);
-			}
+			addbook(section_num);
 			structs_to_files();
 			counetr_to_file();
 			cout << "\n\t\tSuccessfully added \n\n";
@@ -924,37 +909,31 @@ void admin_options()
 		else if (choices1 == 2)
 		{
 			book_num = select_book(section_num);
-			cout << "1 : edit book \n2 : Delete book \n3: return homepage\n";
+
 			while (true)
 			{
-				cin >> choices2;
+				cout << "\nIt's your options\n\n";
+				cout << "1 : edit book \n2 : Delete book \n3: return homepage\n";
+				cout << "Please choose an option : "; cin >> choices2; cout << endl;
 				if (choices2 == 1)
 				{
 					if (section_num == 1)
-					{
-						editbook(fantasy[book_num - 1]);
-						admin_options();
-					}
+					editbook(fantasy[book_num - 1]);
+						
 					else if (section_num == 2)
-					{
-						editbook(mystery[book_num - 1]);
-						admin_options();
-					}
+					editbook(mystery[book_num - 1]);
+					
 					else if (section_num == 3)
-					{
-						editbook(romance[book_num - 1]);
-						admin_options();
-					}
+					editbook(romance[book_num - 1]);
+					
 					else if (section_num == 4)
-					{
-						editbook(non_fiction[book_num - 1]);
-						admin_options();
-					}
+					editbook(non_fiction[book_num - 1]);
+						
+					
 					else if (section_num == 5)
-					{
-						editbook(science_fiction[book_num - 1]);
-						admin_options();
-					}
+				    editbook(science_fiction[book_num - 1]);
+
+					admin_options();
 					break;
 				}
 				else if (choices2 == 2)
@@ -971,6 +950,7 @@ void admin_options()
 				}
 				else {
 					cout << "\n\t\tInvalid choice! please try again.\n\n";
+					continue;
 				}
 			}
 		}
@@ -980,7 +960,7 @@ void admin_options()
 		else
 		{
 			cout << "\n\t\tInvalid choice! please try again.\n\n";
-			admin_options();
+			continue;
 		}
 		break;
 	}

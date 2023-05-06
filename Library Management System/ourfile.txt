@@ -13,3 +13,6 @@ Menna
 user
 sama
 123
+admin
+manon
+l123
