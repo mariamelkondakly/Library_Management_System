@@ -35,10 +35,11 @@ struct book
 	string price;
 	string numofpages;
 	string review;
+	string countity;
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
-vector <pair<string, int>>cart_vector;
+vector <pair<int, int>>cart_vector;
 
 //******************************	End of Book struct	*************************
 //******************************	Start of transitions	*************************
@@ -63,9 +64,10 @@ void file_to_fantasy()
 				else if (index == 5)    fantasy[i].price = line;
 				else if (index == 6)    fantasy[i].numofpages = line;
 				else if (index == 7)    fantasy[i].review = line;
+				else if (index == 8)     fantasy[i].countity = line;
 				index++;
 				if (line == "##") { fantasycounter++; break; }
-				if (index == 8)		break;
+				if (index == 9)		break;
 			}
 		}
 	}
@@ -93,9 +95,10 @@ void file_to_mystery()
 				else if (index == 5)    mystery[i].price = line;
 				else if (index == 6)    mystery[i].numofpages = line;
 				else if (index == 7)    mystery[i].review = line;
+				else if (index == 8)    mystery[i].countity = line;
 				index++;
 				if (line == "##") { mysterycounter++; break; }
-				if (index == 8)	break;
+				if (index == 9)	break;
 			}
 		}
 	}
@@ -124,9 +127,10 @@ void file_to_romance()
 				else if (index == 5)    romance[i].price = line;
 				else if (index == 6)    romance[i].numofpages = line;
 				else if (index == 7)    romance[i].review = line;
+				else if (index == 8)    romance[i].countity = line;
 				index++;
 				if (line == "##") { romancecounter++; break; }
-				if (index == 8)	break;
+				if (index == 9)	break;
 			}
 		}
 	}
@@ -155,10 +159,11 @@ void file_to_non_fiction()
 				else if (index == 5)    non_fiction[i].price = line;
 				else if (index == 6)    non_fiction[i].numofpages = line;
 				else if (index == 7)    non_fiction[i].review = line;
+				else if (index == 8)    non_fiction[i].countity = line;
 				index++;
-				if (index == 8)	break;
-				if (line == "##") { non_fictioncounter++; break; }
-				
+				if (line == "##") {
+				non_fictioncounter++; break;}
+				if (index == 9)	break;
 			}
 		}
 	}
@@ -186,9 +191,10 @@ void file_to_science_fiction()
 				else if (index == 5)    science_fiction[i].price = line;
 				else if (index == 6)    science_fiction[i].numofpages = line;
 				else if (index == 7)    science_fiction[i].review = line;
+				else if (index == 8)     science_fiction[i].countity = line;
 				index++;
 				if (line == "##") { science_fictioncounter++; break; }
-				if (index == 8)	break;
+				if (index == 9)	break;
 			}
 		}
 	}
@@ -204,7 +210,7 @@ void struct_to_fantasy()
 	for (int i = 0; i < fantasy_num; i++)
 	{
 
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0) file << fantasy[i].title << endl;
 			else if (j == 1) file << fantasy[i].author << endl;
@@ -214,6 +220,7 @@ void struct_to_fantasy()
 			else if (j == 5) file << fantasy[i].price << endl;
 			else if (j == 6) file << fantasy[i].numofpages << endl;
 			else if (j == 7) file << fantasy[i].review << endl;
+			else if (j == 8) file << fantasy[i].countity << endl;
 		}
 	}
 	file << "##";
@@ -228,7 +235,7 @@ void struct_to_mystery()
 	for (int i = 0; i < mystery_num; i++)
 	{
 
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0) file << mystery[i].title << endl;
 			else if (j == 1) file << mystery[i].author << endl;
@@ -238,6 +245,7 @@ void struct_to_mystery()
 			else if (j == 5) file << mystery[i].price << endl;
 			else if (j == 6) file << mystery[i].numofpages << endl;
 			else if (j == 7) file << mystery[i].review << endl;
+			else if (j == 8) file << mystery[i].countity << endl;
 		}
 	}
 	file << "##";
@@ -251,7 +259,7 @@ void struct_to_romantic()
 
 	for (int i = 0; i < romance_num; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0) file << romance[i].title << endl;
 			else if (j == 1) file << romance[i].author << endl;
@@ -261,6 +269,7 @@ void struct_to_romantic()
 			else if (j == 5) file << romance[i].price << endl;
 			else if (j == 6) file << romance[i].numofpages << endl;
 			else if (j == 7) file << romance[i].review << endl;
+			else if (j == 8) file << romance[i].countity << endl;
 		}
 	}
 	file << "##";
@@ -274,7 +283,7 @@ void struct_to_non_fiction()
 
 	for (int i = 0; i < non_fiction_num; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0) file << non_fiction[i].title << endl;
 			else if (j == 1) file << non_fiction[i].author << endl;
@@ -284,6 +293,7 @@ void struct_to_non_fiction()
 			else if (j == 5) file << non_fiction[i].price << endl;
 			else if (j == 6) file << non_fiction[i].numofpages << endl;
 			else if (j == 7) file << non_fiction[i].review << endl;
+			else if (j == 8) file << non_fiction[i].countity << endl;
 		}
 	}
 	file << "##";
@@ -297,7 +307,7 @@ void struct_to_scientific_fiction()
 
 	for (int i = 0; i < science_fiction_num; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0) file << science_fiction[i].title << endl;
 			else if (j == 1) file << science_fiction[i].author << endl;
@@ -307,6 +317,7 @@ void struct_to_scientific_fiction()
 			else if (j == 5) file << science_fiction[i].price << endl;
 			else if (j == 6) file << science_fiction[i].numofpages << endl;
 			else if (j == 7) file << science_fiction[i].review << endl;
+			else if (j == 8) file << science_fiction[i].countity << endl;
 		}
 	}
 	file << "##";
@@ -517,6 +528,7 @@ void editbook(book& Book_to_Edit)
 		cout << "\t6: edit price\n";
 		cout << "\t7: edit number of pages\n";
 		cout << "\t8: edit review\n";
+		cout << "\t9: edit countity\n";
 		cout << "\t0: back\n";
 
 		cout << "Choose the detail you want to edit : ";		cin >> choice;
@@ -555,6 +567,10 @@ void editbook(book& Book_to_Edit)
 			cin.ignore();
 			getline(cin, Book_to_Edit.review);
 			break;
+		case 9:cout << "\nEnter new countity : ";
+			cin.ignore();
+			getline(cin, Book_to_Edit.countity);
+			break;
 		}
 
 		cout << "\n\t\tDo you want to edit any other details in this book? (0 to quit editing) \n";
@@ -582,6 +598,8 @@ void addbook(int section_num) {
 		cin.ignore();
 		cout << "\nEnter review : ";
 		getline(cin, fantasy[fantasy_num].review);
+		cout << "\nEnter countity : ";
+		getline(cin, fantasy[fantasy_num].countity);
 		fantasy_num++;
 	}
 	else if (section_num == 2 ){
@@ -603,6 +621,8 @@ void addbook(int section_num) {
 		cin.ignore();
 		cout << "\nEnter review : ";
 		getline(cin, mystery[mystery_num].review);
+		cout << "\nEnter countity : ";
+		getline(cin, mystery[mystery_num].countity);
 		mystery_num++;
 	}
 	else if (section_num == 3) {
@@ -624,6 +644,8 @@ void addbook(int section_num) {
 		cin.ignore();
 		cout << "\nEnter review : ";
 		getline(cin, romance[romance_num].review);
+		cout << "\nEnter countity : ";
+		getline(cin, romance[romance_num].countity);
 		romance_num++;
 	}
 	else if (section_num == 4) {
@@ -645,6 +667,8 @@ void addbook(int section_num) {
 		cin.ignore();
 		cout << "\nEnter review : ";
 		getline(cin, non_fiction[non_fiction_num].review);
+		cout << "\nEnter countity : ";
+		getline(cin, non_fiction[non_fiction_num].countity);
 		non_fiction_num++;
 	}
 	else if (section_num == 5) {
@@ -666,6 +690,8 @@ void addbook(int section_num) {
 		cin.ignore();
 		cout << "\nEnter review : ";
 		getline(cin, science_fiction[science_fiction_num].review);
+		cout << "\nEnter countity : ";
+		getline(cin, science_fiction[science_fiction_num].countity);
 		science_fiction_num++;
 	}
 }
@@ -815,7 +841,7 @@ int sections()
 		sections();
 	}
 	return section_num;
-}
+}  
 
 void user_sequence() {
 	int section_num = sections();
@@ -835,20 +861,21 @@ void user_sequence() {
 					cin >> user_choice2; cout << endl;
 					if (user_choice2 == 1) {
 						cart();
+						user_sequence();
 						break;
 					}
 					else if (user_choice2 == 2) {
-						user_sequence();		break;
+						user_sequence(); break;
 					}
 					else {
 						cout << "\n\t\tInvalid choice! please try again\n\n";
 					}
 				}
-				break;
+
 			}
 			else if (user_choice == 2) {
 				cart();	
-				break;
+				user_sequence();
 			}
 			else if (user_choice == 3) {
 				user_sequence();		break;
@@ -963,56 +990,53 @@ void admin_options()
 
 void add_to_cart(int section_num, int num_book)
 {
-	int price;
 	bool exist = 0; // to check if the book is available or not
+
+	for (int i = 0; i < cart_vector.size(); i++)
+	{
+		if (cart_vector[i].first == section_num && cart_vector[i].second == num_book)
+		{
+			cout << "The book is already added to the cart \n\n";
+			return;
+		}
+
+	}
 
 	if (section_num == 1)
 	{
-		price = string_to_int(fantasy[num_book - 1].price);
 		if (fantasy[num_book - 1].status == "Unavailable" || fantasy[num_book - 1].status == "unavailable")
 			exist = 1;
-		else
-		cart_vector.push_back({ fantasy[num_book - 1].title , price });
 	}
 
 	else if (section_num == 2)
 	{
-		price = string_to_int(mystery[num_book - 1].price);
 		if (mystery[num_book - 1].status == "Unavailable" || mystery[num_book - 1].status == "unavailable")
 			exist = 1;
-		else
-		cart_vector.push_back({ mystery[num_book - 1].title , price });
 	}
 
 	else if (section_num == 3)
 	{
-		price = string_to_int(romance[num_book - 1].price);
 		if (romance[num_book - 1].status == "Unavailable" || romance[num_book - 1].status == "unavailable")
-			exist = 1;
-		else
-		cart_vector.push_back({ romance[num_book - 1].title , price });
+		exist = 1;
 	}
 
 	else if (section_num == 4)
-	{
-		price = string_to_int(non_fiction[num_book - 1].price);
+	{	
 		if (non_fiction[num_book - 1].status == "Unavailable" || non_fiction[num_book - 1].status == "unavailable")
 			exist = 1;
-		else
-		cart_vector.push_back({ non_fiction[num_book - 1].title , price });
 	}
 
 	else if (section_num == 5)
 	{
-		price = string_to_int(science_fiction[num_book - 1].price);
 		if (science_fiction[num_book - 1].status == "Unavailable" || science_fiction[num_book - 1].status == "unavailable")
 			exist = 1;
-		else
-		cart_vector.push_back({ science_fiction[num_book - 1].title , price });
 	}
 
 	if (!exist)
+	{
 		cout << "\n\t\tSuccessfully added !\n\n";
+		cart_vector.push_back({ section_num,num_book });
+	}
 	else
 		cout << "\t\tThe book is not available !\n\n";
 }
@@ -1023,52 +1047,133 @@ void delete_cart(int book_num)
 	cout << "\n\t\tSuccessfully deleted ! \n";
 }
 
-void cart(bool )
+void cart()
 {
 	int total_price = 0;
-	int user_choice3, num_to_delete_from_cart;
+	string choice;
 	cout << "\n";
-	if (!cart_vector.size()) 
+	if (!cart_vector.size())
 	{
 		cout << "The cart is empty \n\n";
-		user_sequence();
+		return;
 	}
 
-	else {
-		for (int i = 0; i < cart_vector.size(); i++)
+	for (int i = 0; i < cart_vector.size(); i++)
+	{
+		int book_num = cart_vector[i].second,price;
+
+		cout << "#Book " << i + 1 << "\t";
+
+		if (cart_vector[i].first == 1)
 		{
-			total_price += cart_vector[i].second;
-			cout << "Book #" << i + 1 << "\t name : " << cart_vector[i].first << "\t price : " << cart_vector[i].second << "$\n\n";
+			price = string_to_int(fantasy[book_num - 1].price);
+			cout << "name : " << fantasy[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
 		}
-		cout << "\n\tThe total price is : " << total_price << "$\n\n";
-		while (true)
+
+		else if (cart_vector[i].first == 2)
 		{
-			cout << "\n1-Delete from cart :\n2-Checkout : \n3-Return to home : \n\nPlease choose an option : ";		cin >> user_choice3; cout << endl;
-			if (user_choice3 == 1) {
-				cout << "\nWhich book do you want to delete : ";		cin >> num_to_delete_from_cart;
-				if (num_to_delete_from_cart <= cart_vector.size() && num_to_delete_from_cart > 0) {
-					delete_cart(num_to_delete_from_cart);
-					cart();
-					continue;
-				}
-				else
+		    price = string_to_int(mystery[book_num - 1].price);
+			cout << "name : " << mystery[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 3)
+		{
+			price = string_to_int(romance[book_num - 1].price);
+			cout << "name : " << romance[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 4)
+		{
+			 price = string_to_int(non_fiction[book_num - 1].price);
+			cout << "name : " << non_fiction[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 5)
+		{
+		    price = string_to_int(science_fiction[book_num - 1].price);
+			cout << "name : " << science_fiction[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+		}
+
+		total_price += price;
+	}
+
+
+	cout << "\n\tThe total price is : " << total_price << "$\n\n";
+	
+
+	while (true)
+	{
+		cout << "Do you want to check out from the cart ?\n\n";
+		cout << "Please enter yes or no : ";
+		cin >> choice; cout << endl;
+		if (choice == "Yes" || choice == "yes")
+		{
+			for (int i = 0; i < cart_vector.size(); i++)
+			{
+				int book_num = cart_vector[i].second,countity;
+
+				if (cart_vector[i].first == 1)
 				{
-					cout << "\n\t\tInvalid choice !\n\n";		continue;
+					countity = string_to_int(fantasy[book_num - 1].countity);
+					countity--;
+					if (!countity)
+					fantasy[book_num-1].status = "Unavailable";
+					fantasy[book_num - 1].countity = to_string(countity);
 				}
-				cart();
-				break;
+				
+				else if (cart_vector[i].first == 2)
+				{
+					countity = string_to_int(mystery[book_num - 1].countity);
+					countity--;
+					if (!countity)
+					mystery[book_num-1].status = "Unavailable";
+					mystery[book_num - 1].countity = to_string(countity);
+				}
+
+				else if (cart_vector[i].first == 3)
+				{
+					countity = string_to_int(romance[book_num - 1].countity);
+					countity--;
+					if (!countity)
+					romance[book_num-1].status = "Unavailable";
+					romance[book_num - 1].countity = to_string(countity);
+				}
+
+				else if (cart_vector[i].first == 4)
+				{
+					countity = string_to_int(non_fiction[book_num - 1].countity);
+					countity--;
+					if (!countity)
+					non_fiction[book_num-1].status = "Unavailable";
+					non_fiction[book_num - 1].countity = to_string(countity);
+				}
+
+				else if (cart_vector[i].first == 5)
+				{
+					countity = string_to_int(science_fiction[book_num - 1].countity);
+					countity--;
+					if (!countity)
+				    science_fiction[book_num-1].status = "Unavailable";
+					science_fiction[book_num - 1].countity = to_string(countity);
+				}
+
+
 			}
-			else if (user_choice3 == 2) {
-				cart_vector.clear();
-				cout << "Successfully checked out !\n\n";
-			}
-			else if (user_choice3 == 3) {
-				user_sequence();		break;
-			}
-			else {
-				cout << "\n\t\tInvalid choice! please try again\n\n";
-			}
+			cart_vector.clear();
+			structs_to_files();
+			cout << "Successfully checked out !\n\n";
+			return;
 		}
+
+		else if (choice == "No" || choice == "no")
+		return;
+		
+		else
+		{
+			cout << "Invalid choice!\n\n";
+			continue;
+		}
+
 	}
 }
 
