@@ -38,6 +38,15 @@ struct book
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
+struct person
+{
+	string usertype;
+	string username;
+	string password;
+};
+int users = 0;
+person information[arrsize];
+
 vector <pair<int, int>>cart_vector;
 
 //******************************	End of Book struct	*************************
@@ -203,19 +212,15 @@ void struct_to_fantasy()
 
 	for (int i = 0; i < fantasy_num; i++)
 	{
-
-		for (int j = 0; j < 9; j++)
-		{
-			if (j == 0) file << fantasy[i].title << endl;
-			else if (j == 1) file << fantasy[i].author << endl;
-			else if (j == 2) file << fantasy[i].description << endl;
-			else if (j == 3) file << fantasy[i].type << endl;
-			else if (j == 4) file << fantasy[i].status << endl;
-			else if (j == 5) file << fantasy[i].price << endl;
-			else if (j == 6) file << fantasy[i].numofpages << endl;
-			else if (j == 7) file << fantasy[i].review << endl;
-			else if (j == 8) file << fantasy[i].countity << endl;
-		}
+		file << fantasy[i].title << endl;
+		file << fantasy[i].author << endl;
+		file << fantasy[i].description << endl;
+		file << fantasy[i].type << endl;
+		file << fantasy[i].status << endl;
+		file << fantasy[i].price << endl;
+		file << fantasy[i].numofpages << endl;
+		file << fantasy[i].review << endl;
+		file << fantasy[i].countity << endl;
 	}
 	file << "##";
 	file.close();
@@ -228,19 +233,15 @@ void struct_to_mystery()
 
 	for (int i = 0; i < mystery_num; i++)
 	{
-
-		for (int j = 0; j < 9; j++)
-		{
-			if (j == 0) file << mystery[i].title << endl;
-			else if (j == 1) file << mystery[i].author << endl;
-			else if (j == 2) file << mystery[i].description << endl;
-			else if (j == 3) file << mystery[i].type << endl;
-			else if (j == 4) file << mystery[i].status << endl;
-			else if (j == 5) file << mystery[i].price << endl;
-			else if (j == 6) file << mystery[i].numofpages << endl;
-			else if (j == 7) file << mystery[i].review << endl;
-			else if (j == 8) file << mystery[i].countity << endl;
-		}
+		file << mystery[i].title << endl;
+		file << mystery[i].author << endl;
+		file << mystery[i].description << endl;
+		file << mystery[i].type << endl;
+		file << mystery[i].status << endl;
+		file << mystery[i].price << endl;
+		file << mystery[i].numofpages << endl;
+		file << mystery[i].review << endl;
+		file << mystery[i].countity << endl;
 	}
 	file << "##";
 	file.close();
@@ -253,18 +254,15 @@ void struct_to_romantic()
 
 	for (int i = 0; i < romance_num; i++)
 	{
-		for (int j = 0; j < 9; j++)
-		{
-			if (j == 0) file << romance[i].title << endl;
-			else if (j == 1) file << romance[i].author << endl;
-			else if (j == 2) file << romance[i].description << endl;
-			else if (j == 3) file << romance[i].type << endl;
-			else if (j == 4) file << romance[i].status << endl;
-			else if (j == 5) file << romance[i].price << endl;
-			else if (j == 6) file << romance[i].numofpages << endl;
-			else if (j == 7) file << romance[i].review << endl;
-			else if (j == 8) file << romance[i].countity << endl;
-		}
+		file << romance[i].title << endl;
+		file << romance[i].author << endl;
+		file << romance[i].description << endl;
+		file << romance[i].type << endl;
+		file << romance[i].status << endl;
+		file << romance[i].price << endl;
+		file << romance[i].numofpages << endl;
+		file << romance[i].review << endl;
+		file << romance[i].countity << endl;
 	}
 	file << "##";
 	file.close();
@@ -277,18 +275,15 @@ void struct_to_non_fiction()
 
 	for (int i = 0; i < non_fiction_num; i++)
 	{
-		for (int j = 0; j < 9; j++)
-		{
-			if (j == 0) file << non_fiction[i].title << endl;
-			else if (j == 1) file << non_fiction[i].author << endl;
-			else if (j == 2) file << non_fiction[i].description << endl;
-			else if (j == 3) file << non_fiction[i].type << endl;
-			else if (j == 4) file << non_fiction[i].status << endl;
-			else if (j == 5) file << non_fiction[i].price << endl;
-			else if (j == 6) file << non_fiction[i].numofpages << endl;
-			else if (j == 7) file << non_fiction[i].review << endl;
-			else if (j == 8) file << non_fiction[i].countity << endl;
-		}
+		file << non_fiction[i].title << endl;
+		file << non_fiction[i].author << endl;
+		file << non_fiction[i].description << endl;
+		file << non_fiction[i].type << endl;
+		file << non_fiction[i].status << endl;
+		file << non_fiction[i].price << endl;
+		file << non_fiction[i].numofpages << endl;
+		file << non_fiction[i].review << endl;
+		file << non_fiction[i].countity << endl;
 	}
 	file << "##";
 	file.close();
@@ -301,18 +296,15 @@ void struct_to_scientific_fiction()
 
 	for (int i = 0; i < science_fiction_num; i++)
 	{
-		for (int j = 0; j < 9; j++)
-		{
-			if (j == 0) file << science_fiction[i].title << endl;
-			else if (j == 1) file << science_fiction[i].author << endl;
-			else if (j == 2) file << science_fiction[i].description << endl;
-			else if (j == 3) file << science_fiction[i].type << endl;
-			else if (j == 4) file << science_fiction[i].status << endl;
-			else if (j == 5) file << science_fiction[i].price << endl;
-			else if (j == 6) file << science_fiction[i].numofpages << endl;
-			else if (j == 7) file << science_fiction[i].review << endl;
-			else if (j == 8) file << science_fiction[i].countity << endl;
-		}
+		file << science_fiction[i].title << endl;
+		file << science_fiction[i].author << endl;
+		file << science_fiction[i].description << endl;
+		file << science_fiction[i].type << endl;
+		file << science_fiction[i].status << endl;
+		file << science_fiction[i].price << endl;
+		file << science_fiction[i].numofpages << endl;
+		file << science_fiction[i].review << endl;
+		file << science_fiction[i].countity << endl;
 	}
 	file << "##";
 	file.close();
@@ -361,6 +353,28 @@ void counetr_to_file()
 	file.close();
 }
 
+void file_to_information()
+{
+	string userType, user_name, password_;
+	ifstream read("ourfile.txt");
+	while (getline(read, userType))
+	{
+		getline(read, user_name);
+		getline(read, password_);
+		information[users].usertype = userType;
+		information[users].username = user_name;
+		information[users].password = password_;
+		users++;
+	}
+}
+
+void information_to_file()
+{
+	ofstream read("ourfile.txt");
+	for (int i = 0; i < users; i++)
+	read << information[i].usertype << endl << information[i].username << endl << information[i].password << endl;
+}
+
 //******************************	 End of transitions		*************************
 int welcome();
 void registerUser(bool isAdmin);
@@ -378,9 +392,11 @@ void cart();
 
 int main()
 {
+	file_to_information();
 	file_to_counter();
 	files_to_struct();
 	welcome();
+	information_to_file();
 	structs_to_files();
 	counetr_to_file();
 	return 0;
@@ -392,7 +408,7 @@ int welcome()
 {
 	int Admin_User, choice;
 	cout << "\t\t----------		Welcome to 6Ms library		----------" << "\n\n";
-	cout << "1: Login\n2: Register\n\nYour choice: ";			cin >> choice;
+	cout << "1: Login\n2: Register\n3: Edit information\n\nYour choice: ";			cin >> choice; cout << endl;
 	if (choice == 1)
 	{
 		isLoggedIn();
@@ -413,9 +429,62 @@ int welcome()
 		}
 		return 2;
 	}
+
+	else if (choice == 3)
+	{
+		string s;
+		bool c = 0;
+		cout << "1 :Edit username\n2 :Edit password\n\n";
+		cout << "Please enter your choice : "; cin >> choice; cout << endl;
+		if (choice == 1)
+		{
+			cout << "Please enter your last username : "; cin >> s; cout << endl;
+			for (int i = 0; i < users; i++)
+			{
+				if (s == information[i].username)
+				{
+					cout << "Please enter your new username : "; 
+					cin >> s; information[i].username = s;
+					cout << endl;
+					c = 1;
+					break;
+				}
+			}
+
+			if (c == 0)
+			cout << "The username is not existed\n\n";
+		}
+
+		else if (choice == 2)
+		{
+			cout << "Please enter your last password : "; cin >> s; cout << endl;
+			for (int i = 0; i < users; i++)
+			{
+				if (s == information[i].password)
+				{
+					cout << "Please enter your new password : ";
+					cin >> s; 
+					information[i].password = s;
+					cout << endl;
+					c = 1;
+					break;
+				}
+			}
+
+			if (c == 0)
+			cout << "The password is not existed\n\n";
+		}
+		
+		else 
+		cout << "Invalid Input!\n\n";
+
+		information_to_file();
+		welcome();
+	}
+
 	else
 	{
-		cout << "\t\tInvalid input. Please enter 1 or 2 .\n\n" ;
+		cout << "\t\tInvalid input. Please enter 1 or 2 or 3.\n\n" ;
 		welcome();
 	}
 }
