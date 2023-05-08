@@ -1019,7 +1019,7 @@ void add_to_cart(int section_num, int num_book)
 
 void delete_cart(int book_num)
 {
-	cart_vector.erase(cart_vector.begin()+book_num-1);
+	cart_vector.erase(cart_vector.begin()+book_num);
 	cout << "\n\t\tSuccessfully deleted ! \n";
 }
 
@@ -1038,36 +1038,36 @@ void cart()
 	{
 		int book_num = cart_vector[i].second,price;
 
-		cout << "#Book " << i + 1 << "\t";
+		cout << "#Book " << i + 1 << "\t\t";
 
 		if (cart_vector[i].first == 1)
 		{
 			price = string_to_int(fantasy[book_num - 1].price);
-			cout << "name : " << fantasy[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+			cout << "name : " << fantasy[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
 		}
 
 		else if (cart_vector[i].first == 2)
 		{
 		    price = string_to_int(mystery[book_num - 1].price);
-			cout << "name : " << mystery[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+			cout << "name : " << mystery[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
 		}
 
 		else if (cart_vector[i].first == 3)
 		{
 			price = string_to_int(romance[book_num - 1].price);
-			cout << "name : " << romance[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+			cout << "name : " << romance[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
 		}
 
 		else if (cart_vector[i].first == 4)
 		{
 			 price = string_to_int(non_fiction[book_num - 1].price);
-			cout << "name : " << non_fiction[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+			cout << "name : " << non_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
 		}
 
 		else if (cart_vector[i].first == 5)
 		{
 		    price = string_to_int(science_fiction[book_num - 1].price);
-			cout << "name : " << science_fiction[book_num - 1].title << "\t" << "price : " << price << "$\n\n";
+			cout << "name : " << science_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
 		}
 
 		total_price += price;
@@ -1076,6 +1076,28 @@ void cart()
 
 	cout << "\n\tThe total price is : " << total_price << "$\n\n";
 	
+	while (true)
+	{
+		string s;
+		int book_num;
+		cout << "Do you want to delete a book from the cart?\n\n";
+		cout << "Please enter yes or no : "; cin >> s; cout << endl;
+		if (s == "Yes" || s == "yes")
+		{
+			cout << "Please enter the number of the book : ";
+			cin >> book_num; cout << endl;
+			delete_cart(book_num - 1);
+		}
+
+		else if (s == "No" || s == "no")
+		break;
+
+		else
+		{
+			cout << "Invalid Choice!\n\n";
+			continue;
+		}
+	}
 
 	while (true)
 	{
