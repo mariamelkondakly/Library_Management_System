@@ -572,6 +572,7 @@ void isLoggedIn()
 }
 
 void logout() {
+	cart_vector.clear();
 	welcome();
 }
 
@@ -870,7 +871,7 @@ int select_book(int section_num)			// showing the data of a specified book
 int sections()
 {
 	int section_num;
-	cout << "\nIt's our book sections\n\n";
+	cout << "\nIt's our book sections!\n\n";
 	cout << "1 - Fantasy\n" << "2 - Mystery\n" << "3 - Romantic\n" << "4 - Non fiction\n" << "5 - Scientific fiction\n";
 	cout << "\nPlease enter the number of the section : ";		cin >> section_num; cin.clear(); cin.ignore(10000, '\n');
 	cout << "\n";
@@ -901,7 +902,7 @@ int sections()
 	}
 	else
 	{
-		cout << "\n\t\tInvalid Section\n\n";
+		cout << "\n\t\tInvalid Section!\n\n";
 		sections();
 	}
 	return section_num;
@@ -1100,7 +1101,53 @@ void add_to_cart(int section_num, int num_book)
 void delete_cart(int book_num)
 {
 	cart_vector.erase(cart_vector.begin()+book_num);
-	cout << "\n\t\tSuccessfully deleted ! \n";
+	cout << "\n\t\tSuccessfully deleted ! \n\n";
+}
+
+int show_cart()
+{
+	int total_price = 0,price;
+	cout << "It's your cart!\n\n";
+	for (int i = 0; i < cart_vector.size(); i++)
+	{
+		int book_num = cart_vector[i].second, price;
+
+		cout << "#Book " << i + 1 << "\t\t";
+
+		if (cart_vector[i].first == 1)
+		{
+			price = string_to_int(fantasy[book_num - 1].price);
+			cout << "name : " << fantasy[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 2)
+		{
+			price = string_to_int(mystery[book_num - 1].price);
+			cout << "name : " << mystery[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 3)
+		{
+			price = string_to_int(romance[book_num - 1].price);
+			cout << "name : " << romance[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 4)
+		{
+			price = string_to_int(non_fiction[book_num - 1].price);
+			cout << "name : " << non_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
+		}
+
+		else if (cart_vector[i].first == 5)
+		{
+			price = string_to_int(science_fiction[book_num - 1].price);
+			cout << "name : " << science_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
+		}
+
+		total_price += price;
+	}
+
+	return total_price;
 }
 
 void cart()
@@ -1113,53 +1160,14 @@ void cart()
 		cout << "The cart is empty \n\n";
 		return;
 	}
-
-	for (int i = 0; i < cart_vector.size(); i++)
-	{
-		int book_num = cart_vector[i].second,price;
-
-		cout << "#Book " << i + 1 << "\t\t";
-
-		if (cart_vector[i].first == 1)
-		{
-			price = string_to_int(fantasy[book_num - 1].price);
-			cout << "name : " << fantasy[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
-		}
-
-		else if (cart_vector[i].first == 2)
-		{
-		    price = string_to_int(mystery[book_num - 1].price);
-			cout << "name : " << mystery[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
-		}
-
-		else if (cart_vector[i].first == 3)
-		{
-			price = string_to_int(romance[book_num - 1].price);
-			cout << "name : " << romance[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
-		}
-
-		else if (cart_vector[i].first == 4)
-		{
-			 price = string_to_int(non_fiction[book_num - 1].price);
-			cout << "name : " << non_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
-		}
-
-		else if (cart_vector[i].first == 5)
-		{
-		    price = string_to_int(science_fiction[book_num - 1].price);
-			cout << "name : " << science_fiction[book_num - 1].title << "\t\t" << "price : " << price << "$\n\n";
-		}
-
-		total_price += price;
-	}
-
-
-	cout << "\n\tThe total price is : " << total_price << "$\n\n";
 	
 	while (!cart_vector.empty())
 	{
 		string s;
 		int book_num;
+		total_price = show_cart();
+
+		cout << "\n\tThe total price is : " << total_price << "$\n\n";
 		cout << "Do you want to delete a book from the cart?\n\n";
 		cout << "Please enter yes or no : "; cin >> s; cout << endl;
 		if (s == "Yes" || s == "yes")
