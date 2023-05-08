@@ -408,7 +408,7 @@ int welcome()
 {
 	int Admin_User, choice;
 	cout << "\t\t----------		Welcome to 6Ms library		----------" << "\n\n";
-	cout << "1: Login\n2: Register\n3: Edit information\n\nYour choice: ";			cin >> choice; cout << endl;
+	cout << "1: Login\n2: Register\n3: Edit information\n\nYour choice: ";			cin >> choice; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 	if (choice == 1)
 	{
 		isLoggedIn();
@@ -435,7 +435,7 @@ int welcome()
 		string s;
 		bool c = 0;
 		cout << "1 :Edit username\n2 :Edit password\n\n";
-		cout << "Please enter your choice : "; cin >> choice; cout << endl;
+		cout << "Please enter your choice : "; cin >> choice; cin.clear(); cin.ignore(10000, '\n');  cout << endl;
 		if (choice == 1)
 		{
 			cout << "Please enter your last username : "; cin >> s; cout << endl;
@@ -443,8 +443,7 @@ int welcome()
 			{
 				if (s == information[i].username)
 				{
-					cout << "Please enter your new username : "; 
-					cin >> s; information[i].username = s;
+					information[i].username = s;
 					cout << endl;
 					c = 1;
 					break;
@@ -594,7 +593,7 @@ void editbook(book& Book_to_Edit)
 		cout << "\t9: edit countity\n";
 		cout << "\t0: back\n\n";
 
-		cout << "Choose the detail you want to edit : ";		cin >> choice;
+		cout << "Choose the detail you want to edit : ";		cin >> choice; cin.clear(); cin.ignore(10000, '\n');
 
 		switch (choice)
 		{
@@ -804,7 +803,7 @@ void delete_book(int section_index, int book_index) {
 int select_book(int section_num)			// showing the data of a specified book
 {
 	int book_num;
-	cout << "\nPlease Enter the number of the book : ";			cin >> book_num;		cout << "\n";
+	cout << "\nPlease Enter the number of the book : ";			cin >> book_num; cin.clear(); cin.ignore(10000, '\n');		cout << "\n";
 	if ((section_num == 1 && book_num <= fantasy_num) ||
 		(section_num == 2 && book_num <= mystery_num) ||
 		(section_num == 3 && book_num <= romance_num) ||
@@ -916,14 +915,14 @@ void user_sequence() {
 		{
 			cout << "1- add to cart : \n2-Go to cart : \n3-Return to home : \n\n";		
 			cout << "Please choose an option : ";
-			cin >> user_choice; cout << endl;
+			cin >> user_choice; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 			if (user_choice == 1) {
 				add_to_cart(section_num, book_num);
 				while (true)
 				{
 					cout << "\n1-Go to cart : \n2-Return to home : \n";		
 					cout << "Please choose an option : ";
-					cin >> user_choice2; cout << endl;
+					cin >> user_choice2; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 					if (user_choice2 == 1) {
 						cart();
 						user_sequence();
@@ -959,7 +958,7 @@ void admin_options()
 	{
 		cout << "\nIt's your options\n\n";
 		cout << "\n1 : add new book\n2 : access books\n3 : Return to home\n\n";			
-		cout << "Please choose an option : ";  cin >> choices1; cout << endl;
+		cout << "Please choose an option : ";  cin >> choices1; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 
 		if (choices1 == 1)
 		{
@@ -978,7 +977,7 @@ void admin_options()
 			{
 				cout << "\nIt's your options\n\n";
 				cout << "1 : edit book \n2 : Delete book \n3: return homepage\n\n";
-				cout << "Please choose an option : "; cin >> choices2; cout << endl;
+				cout << "Please choose an option : "; cin >> choices2; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 				if (choices2 == 1)
 				{
 					if (section_num == 1)
@@ -1154,7 +1153,7 @@ void cart()
 		if (s == "Yes" || s == "yes")
 		{
 			cout << "Please enter the number of the book : ";
-			cin >> book_num; cout << endl;
+			cin >> book_num; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 			delete_cart(book_num - 1);
 		}
 
@@ -1172,7 +1171,7 @@ void cart()
 	{
 		cout << "Do you want to check out from the cart ?\n\n";
 		cout << "Please enter yes or no : ";
-		cin >> choice; cout << endl;
+		cin >> choice; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 		if (choice == "Yes" || choice == "yes")
 		{
 			for (int i = 0; i < cart_vector.size(); i++)
