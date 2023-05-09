@@ -923,15 +923,15 @@ void user_sequence() {
 	int user_choice , user_choice2, user_choice3, num_to_delete_from_cart;
 		while (true)
 		{
-			cout << "It's your options!\n\n";
-			cout << "1- add to cart  \n2-Go to cart  \n3-Return to home\n4-logout \n\n";		
+			cout << "These are your options!\n\n";
+			cout << "1- add to cart  \n2-Go to cart  \n3-Return to home  \n4-logout \n\n";		
 			cout << "Please choose an option : ";
 			cin >> user_choice; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 			if (user_choice == 1) {
 				add_to_cart(section_num, book_num);
 				while (true)
 				{
-					cout << "It's your options!\n\n";
+					cout << "These are your options!\n\n";
 					cout << "1-Go to cart \n2-Return to home\n3-logout\n\n";
 					cout << "Please choose an option : ";
 					cin >> user_choice2; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
@@ -961,7 +961,7 @@ void user_sequence() {
 				user_sequence();		break;
 			}
 			else if (user_choice == 4)
-			logout();
+				logout();
 			else {
 				cout << "\n\t\tInvalid choice! please try again\n\n";
 			}
@@ -974,7 +974,7 @@ void admin_options()
 	int section_num = sections();
 	while (true)
 	{
-		cout << "\nIt's your options\n\n";
+		cout << "\nThese are your options\n\n";
 		cout << "\n1 : add new book\n2 : access books\n3 : Return to home\n4 : logout\n\n";			
 		cout << "Please choose an option : ";  cin >> choices1; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 
@@ -993,7 +993,7 @@ void admin_options()
 
 			while (true)
 			{
-				cout << "\nIt's your options\n\n";
+				cout << "\nThese are your options\n\n";
 				cout << "1 : edit book \n2 : Delete book \n3: return homepage\n4 : logout\n\n";
 				cout << "Please choose an option : "; cin >> choices2; cin.clear(); cin.ignore(10000, '\n'); cout << endl;
 				if (choices2 == 1)
