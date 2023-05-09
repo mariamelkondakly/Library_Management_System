@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <stdlib.h>
 #include <conio.h>
 using namespace std;
 
@@ -34,7 +35,7 @@ struct book
 	string price;
 	string numofpages;
 	string review;
-	string countity;
+	string quantity;
 
 } fantasy[arrsize], mystery[arrsize], romance[arrsize], non_fiction[arrsize], science_fiction[arrsize];
 
@@ -71,7 +72,7 @@ void file_to_fantasy()
 				else if (index == 5)    fantasy[i].price = line;
 				else if (index == 6)    fantasy[i].numofpages = line;
 				else if (index == 7)    fantasy[i].review = line;
-				else if (index == 8)     fantasy[i].countity = line;
+				else if (index == 8)     fantasy[i].quantity = line;
 				index++;
 				if (line == "##") { break; }
 				if (index == 9)		break;
@@ -101,7 +102,7 @@ void file_to_mystery()
 				else if (index == 5)    mystery[i].price = line;
 				else if (index == 6)    mystery[i].numofpages = line;
 				else if (index == 7)    mystery[i].review = line;
-				else if (index == 8)    mystery[i].countity = line;
+				else if (index == 8)    mystery[i].quantity = line;
 				index++;
 				if (line == "##") { break; }
 				if (index == 9)	break;
@@ -132,7 +133,7 @@ void file_to_romance()
 				else if (index == 5)    romance[i].price = line;
 				else if (index == 6)    romance[i].numofpages = line;
 				else if (index == 7)    romance[i].review = line;
-				else if (index == 8)    romance[i].countity = line;
+				else if (index == 8)    romance[i].quantity = line;
 				index++;
 				if (line == "##") {break; }
 				if (index == 9)	break;
@@ -163,7 +164,7 @@ void file_to_non_fiction()
 				else if (index == 5)    non_fiction[i].price = line;
 				else if (index == 6)    non_fiction[i].numofpages = line;
 				else if (index == 7)    non_fiction[i].review = line;
-				else if (index == 8)    non_fiction[i].countity = line;
+				else if (index == 8)    non_fiction[i].quantity = line;
 				index++;
 				if (line == "##") {
 				 break;}
@@ -194,7 +195,7 @@ void file_to_science_fiction()
 				else if (index == 5)    science_fiction[i].price = line;
 				else if (index == 6)    science_fiction[i].numofpages = line;
 				else if (index == 7)    science_fiction[i].review = line;
-				else if (index == 8)     science_fiction[i].countity = line;
+				else if (index == 8)     science_fiction[i].quantity = line;
 				index++;
 				if (line == "##") { break; }
 				if (index == 9)	break;
@@ -220,7 +221,7 @@ void struct_to_fantasy()
 		file << fantasy[i].price << endl;
 		file << fantasy[i].numofpages << endl;
 		file << fantasy[i].review << endl;
-		file << fantasy[i].countity << endl;
+		file << fantasy[i].quantity << endl;
 	}
 	file << "##";
 	file.close();
@@ -241,7 +242,7 @@ void struct_to_mystery()
 		file << mystery[i].price << endl;
 		file << mystery[i].numofpages << endl;
 		file << mystery[i].review << endl;
-		file << mystery[i].countity << endl;
+		file << mystery[i].quantity << endl;
 	}
 	file << "##";
 	file.close();
@@ -262,7 +263,7 @@ void struct_to_romantic()
 		file << romance[i].price << endl;
 		file << romance[i].numofpages << endl;
 		file << romance[i].review << endl;
-		file << romance[i].countity << endl;
+		file << romance[i].quantity << endl;
 	}
 	file << "##";
 	file.close();
@@ -283,7 +284,7 @@ void struct_to_non_fiction()
 		file << non_fiction[i].price << endl;
 		file << non_fiction[i].numofpages << endl;
 		file << non_fiction[i].review << endl;
-		file << non_fiction[i].countity << endl;
+		file << non_fiction[i].quantity << endl;
 	}
 	file << "##";
 	file.close();
@@ -304,7 +305,7 @@ void struct_to_scientific_fiction()
 		file << science_fiction[i].price << endl;
 		file << science_fiction[i].numofpages << endl;
 		file << science_fiction[i].review << endl;
-		file << science_fiction[i].countity << endl;
+		file << science_fiction[i].quantity << endl;
 	}
 	file << "##";
 	file.close();
@@ -419,9 +420,11 @@ int welcome()
 		cout << "1-Admin\n2-User\n\nYour choice: ";				cin >> Admin_User;
 		if (Admin_User == 1) {
 			registerUser(true);				// true means that he is admin 
+			system("cls");
 		}
 		else if (Admin_User == 2) {
 			registerUser(false);			// false means that he is not admin ,is a user
+			system("cls");
 		}
 		else {
 			cout << "\t\tInvalid input , please try again.\n\n";
@@ -451,7 +454,7 @@ int welcome()
 			}
 
 			if (c == 0)
-			cout << "The username is not existed\n\n";
+			cout << "The username does not exist\n\n";
 		}
 
 		else if (choice == 2)
@@ -471,7 +474,7 @@ int welcome()
 			}
 
 			if (c == 0)
-			cout << "The password is not existed\n\n";
+			cout << "The password does not exist\n\n";
 		}
 		
 		else 
@@ -548,7 +551,9 @@ void isLoggedIn()
 		getline(read, password_);
 		if (user_name == username && password_ == password && userType == "admin")
 		{
-			cout << "\n\t\tSuccessfully logged in as an admin!\n";
+			cout << "\n\t\tSuccessfully logged in as an admin!\n";	
+			system("pause");
+			system("cls");
 			admin_options();
 			found = true;
 			break;
@@ -569,11 +574,15 @@ void isLoggedIn()
 		cout << "\n\t\tInvalid username or password \n\n";
 		isLoggedIn();
 	}
+
+
 }
 
 void logout() {
 	cart_vector.clear();
 	welcome();
+	system("pause");
+	system("cls");
 }
 
 //******************************	End of welcome / login / register / logout	*************************
@@ -632,7 +641,7 @@ void editbook(book& Book_to_Edit)
 			break;
 		case 9:cout << "\nEnter new countity : ";
 			cin.ignore();
-			getline(cin, Book_to_Edit.countity);
+			getline(cin, Book_to_Edit.quantity);
 			break;
 		}
 
@@ -664,7 +673,7 @@ void addbook(int section_num) {
 		cout << "\nEnter review : ";
 		getline(cin, fantasy[fantasy_num].review);
 		cout << "\nEnter countity : ";
-		getline(cin, fantasy[fantasy_num].countity);
+		getline(cin, fantasy[fantasy_num].quantity);
 		fantasy_num++;
 	}
 	else if (section_num == 2 ){
@@ -687,7 +696,7 @@ void addbook(int section_num) {
 		cout << "\nEnter review : ";
 		getline(cin, mystery[mystery_num].review);
 		cout << "\nEnter countity : ";
-		getline(cin, mystery[mystery_num].countity);
+		getline(cin, mystery[mystery_num].quantity);
 		mystery_num++;
 	}
 	else if (section_num == 3) {
@@ -710,7 +719,7 @@ void addbook(int section_num) {
 		cout << "\nEnter review : ";
 		getline(cin, romance[romance_num].review);
 		cout << "\nEnter countity : ";
-		getline(cin, romance[romance_num].countity);
+		getline(cin, romance[romance_num].quantity);
 		romance_num++;
 	}
 	else if (section_num == 4) {
@@ -733,7 +742,7 @@ void addbook(int section_num) {
 		cout << "\nEnter review : ";
 		getline(cin, non_fiction[non_fiction_num].review);
 		cout << "\nEnter countity : ";
-		getline(cin, non_fiction[non_fiction_num].countity);
+		getline(cin, non_fiction[non_fiction_num].quantity);
 		non_fiction_num++;
 	}
 	else if (section_num == 5) {
@@ -748,7 +757,7 @@ void addbook(int section_num) {
 		getline(cin, science_fiction[science_fiction_num].type);
 		cout << "\nEnter the status  :  ";
 		getline(cin, science_fiction[science_fiction_num].status);
-		cout << "\nEnter price  :  ";
+		cout << "\nEnter price  :  "; 
 		cin >> science_fiction[science_fiction_num].price;
 		cout << "\nEnter number of pages  :  ";
 		cin >> science_fiction[science_fiction_num].numofpages;
@@ -756,7 +765,7 @@ void addbook(int section_num) {
 		cout << "\nEnter review : ";
 		getline(cin, science_fiction[science_fiction_num].review);
 		cout << "\nEnter countity : ";
-		getline(cin, science_fiction[science_fiction_num].countity);
+		getline(cin, science_fiction[science_fiction_num].quantity);
 		science_fiction_num++;
 	}
 }
@@ -1205,47 +1214,47 @@ void cart()
 				int book_num = cart_vector[i].second,countity;
 				if (cart_vector[i].first == 1)
 				{
-					countity = string_to_int(fantasy[book_num - 1].countity);
+					countity = string_to_int(fantasy[book_num - 1].quantity);
 					countity--;
 					if (!countity)
 					fantasy[book_num-1].status = "Unavailable";
-					fantasy[book_num - 1].countity = to_string(countity);
+					fantasy[book_num - 1].quantity = to_string(countity);
 				}
 				
 				else if (cart_vector[i].first == 2)
 				{
-					countity = string_to_int(mystery[book_num - 1].countity);
+					countity = string_to_int(mystery[book_num - 1].quantity);
 					countity--;
 					if (!countity)
 					mystery[book_num-1].status = "Unavailable";
-					mystery[book_num - 1].countity = to_string(countity);
+					mystery[book_num - 1].quantity = to_string(countity);
 				}
 
 				else if (cart_vector[i].first == 3)
 				{
-					countity = string_to_int(romance[book_num - 1].countity);
+					countity = string_to_int(romance[book_num - 1].quantity);
 					countity--;
 					if (!countity)
 					romance[book_num-1].status = "Unavailable";
-					romance[book_num - 1].countity = to_string(countity);
+					romance[book_num - 1].quantity = to_string(countity);
 				}
 
 				else if (cart_vector[i].first == 4)
 				{
-					countity = string_to_int(non_fiction[book_num - 1].countity);
+					countity = string_to_int(non_fiction[book_num - 1].quantity);
 					countity--;
 					if (!countity)
 					non_fiction[book_num-1].status = "Unavailable";
-					non_fiction[book_num - 1].countity = to_string(countity);
+					non_fiction[book_num - 1].quantity = to_string(countity);
 				}
 
 				else if (cart_vector[i].first == 5)
 				{
-					countity = string_to_int(science_fiction[book_num - 1].countity);
+					countity = string_to_int(science_fiction[book_num - 1].quantity);
 					countity--;
 					if (!countity)
 				    science_fiction[book_num-1].status = "Unavailable";
-					science_fiction[book_num - 1].countity = to_string(countity);
+					science_fiction[book_num - 1].quantity = to_string(countity);
 				}
 
 
